@@ -44,3 +44,8 @@ Database: `postgres`
 ### PostgreSQL
 - [Homepage](https://www.postgresql.org/)
 - [Documentation](https://www.postgresql.org/docs/13/index.html)
+
+### Back-end notes & gotchas
+- With TypeORM you do not need to create migrations for simple things like adding & removing tables and columns. This gets taken care of by modifying the entities. You can turn off this default behavior by setting the `synchronize` flag to `false` in `back-end/src/app/app.module.ts`
+- There is a `back-end/restClient` folder which contains `*.http` files. These files are meant to be used with a vscode marketplace extension called [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client). As the name says, this is a REST Client like Postman.
+-

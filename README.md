@@ -5,7 +5,7 @@
 2. Make sure you're using node version `10.22.0` (install it through `nvm` if needed)
 3. Install Docker
 
-# Get the project up and running
+### Get the project up and running
 Install all of the required dependencies for the root, `front-end/`, and `back-end/` directories
 ```bash
 npm run install:all
@@ -31,16 +31,16 @@ Database: `postgres`
 
 # Documentation
 
-## React Boilerplate Create React App Template
+### React Boilerplate Create React App Template
 - [GitHub Repository](https://github.com/react-boilerplate/react-boilerplate/tree/v5-with-cra)
 - [Documentation](https://cansahin.gitbook.io/react-boilerplate-cra-template/)
 - [Examples & Tutorials for common patterns](https://github.com/react-boilerplate/cra-template-examples)
 
-## NestJS
+### NestJS
 - [Homepage](https://nestjs.com/)
 - [GitHub Repository](https://github.com/nestjs/nest)
 - [Documentation](https://docs.nestjs.com/)
 
-## PostgreSQL
+### PostgreSQL
 - [Homepage](https://www.postgresql.org/)
 - [Documentation](https://www.postgresql.org/docs/13/index.html)

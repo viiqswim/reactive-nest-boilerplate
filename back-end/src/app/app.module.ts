@@ -5,7 +5,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from '../users/users.module';
 
-import { User } from '../entity/user.entity';
+import {
+  User,
+  Profile,
+} from '../entity';
 
 @Module({
   imports: [
@@ -19,7 +22,8 @@ import { User } from '../entity/user.entity';
       synchronize: true,
       logging: true,
       entities: [
-        User
+        User,
+        Profile,
       ],
     }),
     UsersModule,

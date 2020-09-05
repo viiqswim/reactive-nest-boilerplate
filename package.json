@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A full boilerplate to get your application started. All the way from the front-end, back-end, and even the database.",
   "scripts": {
-    "start": "concurrently \"npm run start:front\" \"npm run start:back\" \"npm run start:db\"",
+    "start": "npm install; concurrently \"npm run start:front\" \"npm run start:back\" \"npm run start:db\"",
     "start:front": "cd front-end; npm start",
     "start:back": "cd back-end; npm start",
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -36,11 +36,11 @@ Database: `postgres`
 - [Documentation](https://cansahin.gitbook.io/react-boilerplate-cra-template/)
 - [Examples & Tutorials for common patterns](https://github.com/react-boilerplate/cra-template-examples)
 
-# NestJS
+## NestJS
 - [Homepage](https://nestjs.com/)
 - [GitHub Repository](https://github.com/nestjs/nest)
 - [Documentation](https://docs.nestjs.com/)
 
-# PostgreSQL
+## PostgreSQL
 - [Homepage](https://www.postgresql.org/)
 - [Documentation](https://www.postgresql.org/docs/13/index.html)

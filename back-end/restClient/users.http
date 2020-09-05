@@ -1,8 +1,6 @@
 @host = http://localhost:3001
 @contentType = application/json
-@templateDate = 2020-05-12
-@emailsToSend = victor@digible.com
-@numberOfEmailSamples = 200
+@userId = 5
 
 ### Sample GET request
 GET {{host}}/users/
@@ -15,3 +13,6 @@ Content-Type: {{contentType}}
   "firstName": "Oliver",
   "lastName": "Atom"
 }
+
+### Sample POST request
+DELETE {{host}}/users/{{userId}}

@@ -6,15 +6,15 @@
 3. Install Docker
 
 ### Get the project up and running
-Install all of the required dependencies for the root, `front-end/`, and `back-end/` directories
+1. Install all of the required dependencies for the root, `front-end/`, and `back-end/` directories
 ```bash
 npm run install:all
 ```
-1. Start the front-end, back-end, and database with a single command
+2. Start the front-end, back-end, and database with a single command
 ```bash
 npm start
 ```
-4. Test that the application is up and running
+3. Test that the application is up and running
 - To see the front-end, navigate to `localhost:3000`
 - To see the back-end, navigate to `localhost:3001`
 - To connect to the database, use a PostgreSQL client and use the following information:
@@ -25,7 +25,7 @@ Password: `docker`
 Port: `5432`
 Database: `postgres`
 ```
-5. You're done!
+4. You're done!
 
 ------------------------------------
 

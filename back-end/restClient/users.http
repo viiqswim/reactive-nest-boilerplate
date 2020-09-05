@@ -1,6 +1,6 @@
 @host = http://localhost:3001
 @contentType = application/json
-@userId = 5
+@userId = 10
 
 ### Sample GET request
 GET {{host}}/users/
@@ -14,5 +14,11 @@ Content-Type: {{contentType}}
   "lastName": "Atom"
 }
 
-### Sample POST request
+### Sample DELETE request
 DELETE {{host}}/users/{{userId}}
+
+### Sample soft remove request
+DELETE {{host}}/users/{{userId}}/soft
+
+### Sample soft remove restore request
+GET {{host}}/users/restore/{{userId}}

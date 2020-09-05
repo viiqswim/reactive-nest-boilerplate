@@ -5,7 +5,7 @@
   "scripts": {
     "start": "concurrently \"npm run start:front\" \"npm run start:back\" \"npm run start:db\"",
     "start:front": "cd front-end; npm start",
-    "start:back": "cd back-end; npm start",
+    "start:back": "cd back-end; npm run start:dev",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:db": "docker run --rm --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres",
     "install:all": "npm install; concurrently \"npm run install:front\" \"npm run install:back\"",

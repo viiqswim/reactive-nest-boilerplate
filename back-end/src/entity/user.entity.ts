@@ -2,10 +2,14 @@ import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
+  OneToOne,
+  JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
 } from 'typeorm';
+
+import { Profile } from "./profile.entity";
 
 export enum UserRole {
   ADMIN = 'admin',
@@ -34,12 +38,16 @@ export class User {
   })
   role: UserRole
 
+  @OneToOne(type => Profile)
+  @JoinColumn()
+  profile: Profile;
+
   @CreateDateColumn()
-  createdAt;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updatedAt;
+  updatedAt: Date;
 
   @DeleteDateColumn()
-  deletedAt;
+  deletedAt: Date;
 }

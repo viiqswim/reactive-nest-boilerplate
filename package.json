@@ -1,0 +1,27 @@
+{
+  "name": "reactive-nest-boilerplate",
+  "version": "0.1.0",
+  "description": "A full boilerplate to get your application started. All the way from the front-end, back-end, and even the database.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viiqswim/reactive-nest-boilerplate.git"
+  },
+  "keywords": [
+    "react-boilerplate-cra",
+    "react",
+    "reactjs",
+    "nest",
+    "nestjs",
+    "boilerplate",
+    "full-stack"
+  ],
+  "author": "Victor Dozal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viiqswim/reactive-nest-boilerplate/issues"
+  },
+  "homepage": "https://github.com/viiqswim/reactive-nest-boilerplate#readme"
+}

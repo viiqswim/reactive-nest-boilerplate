@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from '../users/users.module';
 
-import { User } from '../entities/user.entity';
+import { User } from '../entity/user.entity';
 
 @Module({
   imports: [
@@ -16,8 +16,11 @@ import { User } from '../entities/user.entity';
       username: 'postgres',
       password: 'docker',
       database: 'postgres',
-      entities: [User],
       synchronize: true,
+      logging: true,
+      entities: [
+        User
+      ],
     }),
     UsersModule,
   ],

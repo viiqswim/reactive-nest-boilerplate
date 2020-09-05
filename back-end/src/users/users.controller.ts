@@ -28,4 +28,14 @@ export class UsersController {
   remove(@Param('id') id: string): Promise<void> {
     return this.usersService.remove(id);
   }
+
+  @Delete(':id/soft')
+  softRemove(@Param('id') id: string): Promise<void> {
+    return this.usersService.softRemove(id);
+  }
+
+  @Get('/restore/:id')
+  softRemoveRestore(@Param('id') id: string): Promise<void> {
+    return this.usersService.softRemoveRestore(id);
+  }
 }

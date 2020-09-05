@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/viiqswim/reactive-nest-boilerplate/issues"
   },
-  "homepage": "https://github.com/viiqswim/reactive-nest-boilerplate#readme"
+  "homepage": "https://github.com/viiqswim/reactive-nest-boilerplate#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
 }

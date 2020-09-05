@@ -40,6 +40,17 @@ exports[`<Features /> should render with de translations 1`] = `
       />
       <ForwardRef(Features__Content)>
         <ForwardRef(SubTitle)>
+          Connected to a NestJS back-end
+        </ForwardRef(SubTitle)>
+        <NestJsConnector />
+      </ForwardRef(Features__Content)>
+    </ForwardRef(Features__Feature)>
+    <ForwardRef(Features__Feature)>
+      <ForwardRef(SvgState)
+        className="feature-icon"
+      />
+      <ForwardRef(Features__Content)>
+        <ForwardRef(SubTitle)>
           Predictable State
         </ForwardRef(SubTitle)>
         <ForwardRef(P)>
@@ -241,6 +252,17 @@ exports[`<Features /> should render with en translations 1`] = `
     .
   </ForwardRef(Lead)>
   <ForwardRef(Features__List)>
+    <ForwardRef(Features__Feature)>
+      <ForwardRef(SvgState)
+        className="feature-icon"
+      />
+      <ForwardRef(Features__Content)>
+        <ForwardRef(SubTitle)>
+          Connected to a NestJS back-end
+        </ForwardRef(SubTitle)>
+        <NestJsConnector />
+      </ForwardRef(Features__Content)>
+    </ForwardRef(Features__Feature)>
     <ForwardRef(Features__Feature)>
       <ForwardRef(SvgState)
         className="feature-icon"

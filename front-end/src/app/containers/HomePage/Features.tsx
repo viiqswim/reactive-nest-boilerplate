@@ -6,6 +6,7 @@ import { SubTitle } from 'app/containers/HomePage/components/SubTitle';
 import { P } from './components/P';
 import { A } from 'app/components/A';
 import { GithubRepoForm } from 'app/containers/GithubRepoForm';
+import { NestJsConnector } from 'app/containers/NestJsConnector';
 import { ThemeSwitch } from 'app/containers/ThemeSwitch';
 import { LanguageSwitch } from '../LanguageSwitch';
 import { ReactComponent as StateIcon } from './assets/state.svg';
@@ -35,6 +36,13 @@ export function Features() {
         <strong>best DX</strong> and <strong>best practices</strong>.
       </Lead>
       <List>
+        <Feature>
+          <StateIcon className="feature-icon" />
+          <Content>
+            <SubTitle>Connected to a NestJS back-end</SubTitle>
+            <NestJsConnector />
+          </Content>
+        </Feature>
         <Feature>
           <StateIcon className="feature-icon" />
           <Content>

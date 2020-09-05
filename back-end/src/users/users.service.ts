@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from '../dto/create-user.dto';
@@ -9,12 +9,14 @@ import {
 
 @Injectable()
 export class UsersService {
+  private readonly logger = new Logger(UsersService.name);
+
   constructor(
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
     @InjectRepository(Profile)
     private readonly profilesRepository: Repository<Profile>,
-  ) {}
+  ) { }
 
   async create(createUserDto: CreateUserDto): Promise<User> {
     const profile = new Profile();
@@ -26,7 +28,9 @@ export class UsersService {
     user.firstName = createUserDto.firstName;
     user.lastName = createUserDto.lastName;
     user.profile = profile;
-    const savedUser = this.usersRepository.save(user);
+    const savedUser = await this.usersRepository.save(user);
+
+    this.logger.log(`Created a User (ID: ${savedUser.id}) and Profile (ID: ${profile.id})`)
 
     return savedUser;
   }

@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "description": "A full boilerplate to get your application started. All the way from the front-end, back-end, and even the database.",
   "scripts": {
-    "start": "npm install; concurrently \"npm run start:front\" \"npm run start:back\" \"npm run start:db\"",
+    "start": "concurrently \"npm run start:front\" \"npm run start:back\" \"npm run start:db\"",
     "start:front": "cd front-end; npm start",
     "start:back": "cd back-end; npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:db": "docker run --rm --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres",
-    "install:all": "concurrently \"npm run install:front\" \"npm run install:back\"",
+    "install:all": "npm install; concurrently \"npm run install:front\" \"npm run install:back\"",
     "install:front": "cd front-end; npm install",
     "install:back": "cd back-end; npm install"
   },

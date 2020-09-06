@@ -6,11 +6,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from '../users/users.module';
 import { CompaniesModule } from '../companies/companies.module';
+import { CompanyUsersModule } from '../companyUsers/companyUsers.module';
 
 @Module({
   imports: [
     UsersModule,
     CompaniesModule,
+    CompanyUsersModule,
     DotEnvConfig,
     DatabaseConfig,
   ],

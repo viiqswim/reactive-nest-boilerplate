@@ -7,9 +7,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  ManyToOne,
 } from 'typeorm';
 
 import { Profile } from "./profile.entity";
+import { Company } from './company.entity';
 
 export enum UserRole {
   ADMIN = 'admin',
@@ -41,6 +43,14 @@ export class User {
   @OneToOne(type => Profile)
   @JoinColumn()
   profile: Profile;
+
+  @ManyToOne(
+    type => Company,
+    (company: Company) => company.users,
+    { onDelete: 'CASCADE' },
+  )
+  @JoinColumn()
+  company: Company;
 
   @CreateDateColumn()
   createdAt: Date;

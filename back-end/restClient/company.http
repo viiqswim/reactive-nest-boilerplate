@@ -1,0 +1,45 @@
+@host = http://localhost:3001
+@contentType = application/json
+@controller = companies
+@id = 1
+
+### Get many resources
+GET {{host}}/{{controller}}/
+
+### Get one resource
+GET {{host}}/{{controller}}/{{id}}
+
+### Create one resource
+POST {{host}}/{{controller}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Sample name"
+}
+
+### Create many resources
+POST {{host}}/{{controller}}/bulk
+Content-Type: {{contentType}}
+
+{
+  "bulk": [{ "name": "Company Batman" }, { "name": "Company Batgirl" }]
+}
+
+### Update one resource
+PATCH {{host}}/{{controller}}/{{id}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Sample name update"
+}
+
+### Replace one resource
+PUT {{host}}/{{controller}}/{{id}}
+Content-Type: {{contentType}}
+
+{
+  "name": "Sample company replacement"
+}
+
+### Delete one resource
+DELETE {{host}}/{{controller}}/{{id}}

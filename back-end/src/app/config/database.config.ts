@@ -4,6 +4,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import {
   User,
   Profile,
+  Company,
 } from '../../entity';
 
 /**
@@ -25,6 +26,7 @@ export const DatabaseConfig = TypeOrmModule.forRootAsync({
       entities: [
         User,
         Profile,
+        Company,
       ],
     }
   },

@@ -1,89 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getRepos Saga should dispatch the github rate limit error 1`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "combinator": false,
-  "payload": Object {
-    "args": Array [
-      500,
-    ],
-    "context": null,
-    "fn": [Function],
-  },
-  "type": "CALL",
-}
-`;
-
-exports[`getRepos Saga should dispatch the github rate limit error 2`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "combinator": false,
-  "payload": Object {
-    "args": Array [],
-    "selector": [Function],
-  },
-  "type": "SELECT",
-}
-`;
-
-exports[`getRepos Saga should dispatch the github rate limit error 3`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "combinator": false,
-  "payload": Object {
-    "args": Array [
-      "https://api.github.com/users/test/repos?type=all&sort=updated",
-    ],
-    "context": null,
-    "fn": [Function],
-  },
-  "type": "CALL",
-}
-`;
-
-exports[`getRepos Saga should dispatch the reposLoaded action if it requests the data successfully 1`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "combinator": false,
-  "payload": Object {
-    "args": Array [
-      500,
-    ],
-    "context": null,
-    "fn": [Function],
-  },
-  "type": "CALL",
-}
-`;
-
-exports[`getRepos Saga should dispatch the reposLoaded action if it requests the data successfully 2`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "combinator": false,
-  "payload": Object {
-    "args": Array [],
-    "selector": [Function],
-  },
-  "type": "SELECT",
-}
-`;
-
-exports[`getRepos Saga should dispatch the reposLoaded action if it requests the data successfully 3`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "combinator": false,
-  "payload": Object {
-    "args": Array [
-      "https://api.github.com/users/test/repos?type=all&sort=updated",
-    ],
-    "context": null,
-    "fn": [Function],
-  },
-  "type": "CALL",
-}
-`;
-
 exports[`getRepos Saga should dispatch the response error 1`] = `
 Object {
   "@@redux-saga/IO": true,
@@ -117,7 +33,7 @@ Object {
   "combinator": false,
   "payload": Object {
     "args": Array [
-      "https://api.github.com/users/test/repos?type=all&sort=updated",
+      "http://localhost:3001/users/test",
     ],
     "context": null,
     "fn": [Function],
@@ -159,7 +75,7 @@ Object {
   "combinator": false,
   "payload": Object {
     "args": Array [
-      "https://api.github.com/users/test/repos?type=all&sort=updated",
+      "http://localhost:3001/users/test",
     ],
     "context": null,
     "fn": [Function],
@@ -201,7 +117,49 @@ Object {
   "combinator": false,
   "payload": Object {
     "args": Array [
-      "https://api.github.com/users/test/repos?type=all&sort=updated",
+      "http://localhost:3001/users/test",
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+  "type": "CALL",
+}
+`;
+
+exports[`getRepos Saga should dispatch the userLoaded action if it requests the data successfully 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [
+      500,
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+  "type": "CALL",
+}
+`;
+
+exports[`getRepos Saga should dispatch the userLoaded action if it requests the data successfully 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+  "type": "SELECT",
+}
+`;
+
+exports[`getRepos Saga should dispatch the userLoaded action if it requests the data successfully 3`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "args": Array [
+      "http://localhost:3001/users/test",
     ],
     "context": null,
     "fn": [Function],

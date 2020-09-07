@@ -3,11 +3,12 @@ import * as slice from '../slice';
 
 import { nestJsConnectorSaga, getRepos } from '../saga';
 import { RepoErrorType } from '../types';
+import { User } from 'types/Repo';
 
 describe('getRepos Saga', () => {
   let username: any;
-  let repos: any;
-  let getReposIterator: ReturnType<typeof getRepos>;
+  let user: User;
+  let getReposIterator: any;
 
   // We have to test twice, once for a successful load and once for an unsuccessful one
   // so we do all the stuff that happens beforehand automatically in the beforeEach
@@ -31,22 +32,18 @@ describe('getRepos Saga', () => {
     expect(iteration.done).toBe(true);
   });
 
-  it('should dispatch the reposLoaded action if it requests the data successfully', () => {
+  it('should dispatch the userLoaded action if it requests the data successfully', () => {
     username = 'test';
-    repos = [
-      {
-        name: 'repo1',
-        owner: {
-          login: 'username1',
-        },
-      },
-    ];
+    user = {
+      id: 1,
+      firstName: 'repo1',
+    };
 
     const requestDescriptor = getReposIterator.next(username).value;
     expect(requestDescriptor).toMatchSnapshot();
 
-    const putDescriptor = getReposIterator.next(repos).value;
-    expect(putDescriptor).toEqual(put(slice.actions.reposLoaded(repos)));
+    const putDescriptor = getReposIterator.next(user).value;
+    expect(putDescriptor).toEqual(put(slice.actions.userLoaded(user)));
   });
 
   it('should dispatch the user not found error', () => {
@@ -63,26 +60,14 @@ describe('getRepos Saga', () => {
   });
   it('should dispatch the user has no repo error', () => {
     username = 'test';
-    repos = [];
+    user = {};
 
     const requestDescriptor = getReposIterator.next(username).value;
     expect(requestDescriptor).toMatchSnapshot();
 
-    const putDescriptor = getReposIterator.next(repos).value;
+    const putDescriptor = getReposIterator.next(user).value;
     expect(putDescriptor).toEqual(
       put(slice.actions.repoError(RepoErrorType.USER_HAS_NO_REPO)),
-    );
-  });
-  it('should dispatch the github rate limit error', () => {
-    username = 'test';
-
-    const requestDescriptor = getReposIterator.next(username).value;
-    expect(requestDescriptor).toMatchSnapshot();
-
-    const putDescriptor = getReposIterator.throw(new Error('Failed to fetch'))
-      .value;
-    expect(putDescriptor).toEqual(
-      put(slice.actions.repoError(RepoErrorType.GITHUB_RATE_LIMIT)),
     );
   });
 

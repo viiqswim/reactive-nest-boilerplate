@@ -22,7 +22,7 @@ export const selectError = createSelector(
   nestJsConnectorState => nestJsConnectorState.error,
 );
 
-export const selectRepos = createSelector(
+export const selectUser = createSelector(
   [selectDomain],
-  nestJsConnectorState => nestJsConnectorState.repositories,
+  nestJsConnectorState => nestJsConnectorState.user,
 );

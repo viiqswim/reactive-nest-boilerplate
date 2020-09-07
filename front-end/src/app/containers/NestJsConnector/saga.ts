@@ -2,7 +2,7 @@ import { call, put, select, takeLatest, delay } from 'redux-saga/effects';
 import { request } from 'utils/request';
 import { selectUsername } from './selectors';
 import { actions } from './slice';
-import { Repo } from 'types/Repo';
+import { User } from 'types/Repo';
 import { RepoErrorType } from './types';
 
 /**
@@ -16,21 +16,19 @@ export function* getRepos() {
     yield put(actions.repoError(RepoErrorType.USERNAME_EMPTY));
     return;
   }
-  const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
+  const requestURL = `http://localhost:3001/users/${username}`;
 
   try {
     // Call our request helper (see 'utils/request')
-    const repos: Repo[] = yield call(request, requestURL);
-    if (repos?.length > 0) {
-      yield put(actions.reposLoaded(repos));
+    const user: User = yield call(request, requestURL);
+    if (user.id) {
+      yield put(actions.userLoaded(user));
     } else {
       yield put(actions.repoError(RepoErrorType.USER_HAS_NO_REPO));
     }
   } catch (err) {
     if (err.response?.status === 404) {
       yield put(actions.repoError(RepoErrorType.USER_NOT_FOUND));
-    } else if (err.message === 'Failed to fetch') {
-      yield put(actions.repoError(RepoErrorType.GITHUB_RATE_LIMIT));
     } else {
       yield put(actions.repoError(RepoErrorType.RESPONSE_ERROR));
     }

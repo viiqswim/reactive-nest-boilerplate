@@ -10,7 +10,7 @@ import { sliceKey, reducer, actions } from './slice';
 import { nestJsConnectorSaga } from './saga';
 import {
   selectUsername,
-  selectRepos,
+  selectUser,
   selectLoading,
   selectError,
 } from './selectors';
@@ -22,7 +22,7 @@ export function NestJsConnector() {
   useInjectSaga({ key: sliceKey, saga: nestJsConnectorSaga });
 
   const username = useSelector(selectUsername);
-  const repos = useSelector(selectRepos);
+  const user = useSelector(selectUser);
   const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
@@ -53,27 +53,20 @@ export function NestJsConnector() {
   return (
     <Wrapper>
       <FormGroup onSubmit={onSubmitForm}>
-        <FormLabel>Github Username</FormLabel>
+        <FormLabel>User ID</FormLabel>
         <InputWrapper>
           <Input
             type="text"
-            placeholder="Type any Github username"
+            placeholder="Type any user ID"
             value={username}
             onChange={onChangeUsername}
           />
           {isLoading && <LoadingIndicator small />}
         </InputWrapper>
       </FormGroup>
-      {repos?.length > 0 ? (
+      {user?.firstName ? (
         <List>
-          {repos.map(repo => (
-            <RepoItem
-              key={repo.id}
-              name={repo.name}
-              starCount={repo.stargazers_count}
-              url={repo.html_url}
-            />
-          ))}
+          <RepoItem key={user.id} name={user.firstName} />
         </List>
       ) : error ? (
         <ErrorText>{repoErrorText(error)}</ErrorText>
@@ -87,11 +80,9 @@ export const repoErrorText = (error: RepoErrorType) => {
     case RepoErrorType.USER_NOT_FOUND:
       return 'There is no such user 😞';
     case RepoErrorType.USERNAME_EMPTY:
-      return 'Type any Github username';
+      return 'Type any user ID';
     case RepoErrorType.USER_HAS_NO_REPO:
-      return 'User has no repository 🥺';
-    case RepoErrorType.GITHUB_RATE_LIMIT:
-      return 'Looks like github api`s rate limit(60 request/h) has exceeded 🤔';
+      return 'User does not exist';
     default:
       return 'An error has occurred!';
   }

@@ -2,7 +2,7 @@ import * as selectors from '../selectors';
 import { RootState } from 'types';
 import { RepoErrorType } from '../types';
 import { initialState } from '../slice';
-import { Repo } from 'types/Repo';
+import { User } from 'types/Repo';
 
 describe('NestJsConnector selectors', () => {
   let state: RootState = {};
@@ -24,11 +24,11 @@ describe('NestJsConnector selectors', () => {
   });
 
   it('should select username', () => {
-    const repo = { name: 'test' } as Repo;
+    const user = { id: 1, name: 'test' } as User;
     state = {
-      nestJsConnector: { ...initialState, repositories: [repo] },
+      nestJsConnector: { ...initialState, user },
     };
-    expect(selectors.selectRepos(state)).toEqual([repo]);
+    expect(selectors.selectUser(state)).toEqual(user);
   });
 
   it('should select error', () => {

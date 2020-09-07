@@ -33,7 +33,7 @@ describe('<NestJsConnector />', () => {
   beforeEach(() => {
     store = configureAppStore();
     component = renderNestJsConnector(store);
-    store.dispatch(actions.reposLoaded([]));
+    store.dispatch(actions.userLoaded({}));
     expect(store.getState().nestJsConnector).toEqual(initialState);
   });
   afterEach(() => {
@@ -49,7 +49,7 @@ describe('<NestJsConnector />', () => {
 
   it("shouldn't fetch repos on mount if username is empty", () => {
     store.dispatch(actions.changeUsername(''));
-    store.dispatch(actions.reposLoaded([]));
+    store.dispatch(actions.userLoaded({}));
     component.unmount();
     component = renderNestJsConnector(store);
     expect(store.getState().nestJsConnector.loading).toBe(false);
@@ -77,11 +77,9 @@ describe('<NestJsConnector />', () => {
   });
 
   it('should display list when repos not empty', () => {
-    const repoName = 'testRepo';
-    store.dispatch(
-      actions.reposLoaded([{ id: 'test', name: repoName } as any]),
-    );
-    expect(component.queryByText(repoName)).toBeInTheDocument();
+    const firstName = 'first name';
+    store.dispatch(actions.userLoaded({ id: 1, firstName } as any));
+    expect(component.queryByText(firstName)).toBeInTheDocument();
   });
 
   it('should display error when repoError fired', () => {
@@ -98,10 +96,6 @@ describe('<NestJsConnector />', () => {
     expect(component.queryByText(repoErrorText(error))).toBeInTheDocument();
 
     error = RepoErrorType.RESPONSE_ERROR;
-    store.dispatch(actions.repoError(error));
-    expect(component.queryByText(repoErrorText(error))).toBeInTheDocument();
-
-    error = RepoErrorType.GITHUB_RATE_LIMIT;
     store.dispatch(actions.repoError(error));
     expect(component.queryByText(repoErrorText(error))).toBeInTheDocument();
   });

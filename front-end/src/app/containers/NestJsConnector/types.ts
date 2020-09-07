@@ -1,11 +1,11 @@
-import { Repo } from 'types/Repo';
+import { User } from 'types/Repo';
 
 /* --- STATE --- */
 export interface NestJsConnectorState {
   username: string;
   loading: boolean;
   error?: RepoErrorType | null;
-  repositories: Repo[];
+  user: User;
 }
 
 export enum RepoErrorType {
@@ -13,7 +13,6 @@ export enum RepoErrorType {
   USER_NOT_FOUND = 2,
   USERNAME_EMPTY = 3,
   USER_HAS_NO_REPO = 4,
-  GITHUB_RATE_LIMIT = 5,
 }
 
 /*

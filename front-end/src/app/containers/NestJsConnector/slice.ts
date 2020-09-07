@@ -14,12 +14,12 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from 'utils/@reduxjs/toolkit';
 import { ContainerState, RepoErrorType } from './types';
-import { Repo } from 'types/Repo';
+import { User } from 'types/Repo';
 
 // The initial state of the NestJsConnector container
 export const initialState: ContainerState = {
   username: 'viiqswim',
-  repositories: [],
+  user: {},
   loading: false,
   error: null,
 };
@@ -34,11 +34,11 @@ const nestJsConnectorSlice = createSlice({
     loadRepos(state) {
       state.loading = true;
       state.error = null;
-      state.repositories = [];
+      state.user = {};
     },
-    reposLoaded(state, action: PayloadAction<Repo[]>) {
-      const repos = action.payload;
-      state.repositories = repos;
+    userLoaded(state, action: PayloadAction<User>) {
+      const user = action.payload;
+      state.user = user;
       state.loading = false;
     },
     repoError(state, action: PayloadAction<RepoErrorType>) {

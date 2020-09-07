@@ -1,6 +1,6 @@
 import * as slice from '../slice';
 import { ContainerState, RepoErrorType } from '../types';
-import { Repo } from 'types/Repo';
+import { User } from 'types/Repo';
 
 describe('NestJsConnector slice', () => {
   let state: ContainerState;
@@ -29,19 +29,19 @@ describe('NestJsConnector slice', () => {
     >({
       ...slice.initialState,
       loading: true,
-      repositories: [],
+      user: {},
       error: null,
     });
   });
 
-  it('should handle reposLoaded', () => {
-    const repos = [{ name: 'test' }] as Repo[];
-    expect(slice.reducer(state, slice.actions.reposLoaded(repos))).toEqual<
+  it('should handle userLoaded', () => {
+    const user = { id: 1, name: 'test' } as User;
+    expect(slice.reducer(state, slice.actions.userLoaded(user))).toEqual<
       ContainerState
     >({
       ...slice.initialState,
       loading: false,
-      repositories: repos,
+      user: user,
     });
   });
 

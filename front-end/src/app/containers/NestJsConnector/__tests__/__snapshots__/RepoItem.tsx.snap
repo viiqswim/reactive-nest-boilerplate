@@ -1,21 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<RepoItem /> should match the snapshot 1`] = `
-.c4 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c4:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  opacity: 0.8;
-}
-
-.c4:active {
-  opacity: 0.4;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -37,29 +22,6 @@ exports[`<RepoItem /> should match the snapshot 1`] = `
   padding: 0.625rem 0;
 }
 
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  min-width: 6rem;
-}
-
-.c3 .icon {
-  margin-right: 0.125rem;
-}
-
 <div
   class="c0"
 >
@@ -67,28 +29,6 @@ exports[`<RepoItem /> should match the snapshot 1`] = `
     class="c1"
   >
     test
-  </div>
-  <div
-    class="c2"
-  >
-    <div
-      class="c3"
-    >
-      <svg>
-        star.svg
-      </svg>
-      1
-    </div>
-    <a
-      class="c4"
-      href="testUrl"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      <svg>
-        new-window.svg
-      </svg>
-    </a>
   </div>
 </div>
 `;

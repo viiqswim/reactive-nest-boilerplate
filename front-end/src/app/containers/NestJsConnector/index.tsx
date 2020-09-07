@@ -31,7 +31,7 @@ export function NestJsConnector() {
   const onChangeUserId = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const userId = Number(evt.currentTarget.value);
     dispatch(actions.changeUserId(userId));
-    dispatch(actions.loadUsers());
+    dispatch(actions.loadUser());
   };
 
   const useEffectOnMount = (effect: React.EffectCallback) => {
@@ -40,7 +40,7 @@ export function NestJsConnector() {
   useEffectOnMount(() => {
     // When initial state userId is not null, submit the form to load user
     if (userId) {
-      dispatch(actions.loadUsers());
+      dispatch(actions.loadUser());
     }
   });
 

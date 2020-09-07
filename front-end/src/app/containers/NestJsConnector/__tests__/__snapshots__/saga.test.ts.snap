@@ -33,7 +33,7 @@ Object {
   "combinator": false,
   "payload": Object {
     "args": Array [
-      "http://localhost:3001/users/test",
+      "undefined/users/test",
     ],
     "context": null,
     "fn": [Function],
@@ -75,7 +75,7 @@ Object {
   "combinator": false,
   "payload": Object {
     "args": Array [
-      "http://localhost:3001/users/test",
+      "undefined/users/test",
     ],
     "context": null,
     "fn": [Function],
@@ -117,7 +117,7 @@ Object {
   "combinator": false,
   "payload": Object {
     "args": Array [
-      "http://localhost:3001/users/test",
+      "undefined/users/test",
     ],
     "context": null,
     "fn": [Function],
@@ -159,7 +159,7 @@ Object {
   "combinator": false,
   "payload": Object {
     "args": Array [
-      "http://localhost:3001/users/test",
+      "undefined/users/test",
     ],
     "context": null,
     "fn": [Function],

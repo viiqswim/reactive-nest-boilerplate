@@ -31,7 +31,7 @@ const nestJsConnectorSlice = createSlice({
     changeUserId(state, action: PayloadAction<number>) {
       state.userId = Number(action.payload);
     },
-    loadUsers(state) {
+    loadUser(state) {
       state.loading = true;
       state.error = null;
       state.user = {};

@@ -23,8 +23,8 @@ describe('NestJsConnector slice', () => {
     });
   });
 
-  it('should handle loadUsers', () => {
-    expect(slice.reducer(state, slice.actions.loadUsers())).toEqual<
+  it('should handle loadUser', () => {
+    expect(slice.reducer(state, slice.actions.loadUser())).toEqual<
       ContainerState
     >({
       ...slice.initialState,

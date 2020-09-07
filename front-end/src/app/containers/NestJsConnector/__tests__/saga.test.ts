@@ -86,10 +86,10 @@ describe('getUser Saga', () => {
 
 describe('nestJsConnectorSaga Saga', () => {
   const nestJsConnectorIterator = nestJsConnectorSaga();
-  it('should start task to watch for loadUsers action', () => {
+  it('should start task to watch for loadUser action', () => {
     const takeLatestDescriptor = nestJsConnectorIterator.next().value;
     expect(takeLatestDescriptor).toEqual(
-      takeLatest(slice.actions.loadUsers.type, getUser),
+      takeLatest(slice.actions.loadUser.type, getUser),
     );
   });
 });

@@ -74,7 +74,7 @@ describe('<NestJsConnector />', () => {
   });
 
   it('should display loading indicator when state is loading', () => {
-    store.dispatch(actions.loadUsers());
+    store.dispatch(actions.loadUser());
     expect(component.container.querySelector('circle')).toBeInTheDocument();
   });
 

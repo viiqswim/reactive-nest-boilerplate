@@ -4,24 +4,25 @@ import { RootState } from 'types';
 import { initialState } from './slice';
 
 // First select the relevant part from the state
-const selectDomain = (state: RootState) => state.githubRepoForm || initialState;
+const selectDomain = (state: RootState) =>
+  state.nestJsConnector || initialState;
 
 export const selectUsername = createSelector(
   [selectDomain],
-  githubRepoFormState => githubRepoFormState.username,
+  nestJsConnectorState => nestJsConnectorState.username,
 );
 
 export const selectLoading = createSelector(
   [selectDomain],
-  githubRepoFormState => githubRepoFormState.loading,
+  nestJsConnectorState => nestJsConnectorState.loading,
 );
 
 export const selectError = createSelector(
   [selectDomain],
-  githubRepoFormState => githubRepoFormState.error,
+  nestJsConnectorState => nestJsConnectorState.error,
 );
 
 export const selectRepos = createSelector(
   [selectDomain],
-  githubRepoFormState => githubRepoFormState.repositories,
+  nestJsConnectorState => nestJsConnectorState.repositories,
 );

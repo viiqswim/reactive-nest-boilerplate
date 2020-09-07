@@ -9,10 +9,10 @@ import { configureAppStore } from 'store/configureStore';
 import { actions, initialState } from '../slice';
 import { RepoErrorType } from '../types';
 
-function* mockNestJsConnectorSaga() {}
+function* mocknestJsConnectorSaga() {}
 
 jest.mock('../saga', () => ({
-  githubRepoFormSaga: mockNestJsConnectorSaga,
+  nestJsConnectorSaga: mocknestJsConnectorSaga,
 }));
 
 const renderNestJsConnector = (store: Store) =>
@@ -34,7 +34,7 @@ describe('<NestJsConnector />', () => {
     store = configureAppStore();
     component = renderNestJsConnector(store);
     store.dispatch(actions.reposLoaded([]));
-    expect(store.getState().githubRepoForm).toEqual(initialState);
+    expect(store.getState().nestJsConnector).toEqual(initialState);
   });
   afterEach(() => {
     component.unmount();
@@ -44,7 +44,7 @@ describe('<NestJsConnector />', () => {
     component.unmount();
     component = renderNestJsConnector(store);
     expect(initialState.username.length).toBeGreaterThan(0);
-    expect(store.getState().githubRepoForm.loading).toBe(true);
+    expect(store.getState().nestJsConnector.loading).toBe(true);
   });
 
   it("shouldn't fetch repos on mount if username is empty", () => {
@@ -52,13 +52,13 @@ describe('<NestJsConnector />', () => {
     store.dispatch(actions.reposLoaded([]));
     component.unmount();
     component = renderNestJsConnector(store);
-    expect(store.getState().githubRepoForm.loading).toBe(false);
+    expect(store.getState().nestJsConnector.loading).toBe(false);
   });
 
   it('should dispatch action on username change', () => {
     const input = component.container.querySelector('input');
     fireEvent.change(input!, { target: { value: 'test' } });
-    expect(store.getState().githubRepoForm.loading).toBe(true);
+    expect(store.getState().nestJsConnector.loading).toBe(true);
   });
 
   it('should change username field value on action', () => {

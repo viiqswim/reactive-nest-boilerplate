@@ -7,7 +7,7 @@ import { Input } from './components/Input';
 import { RepoItem } from './RepoItem';
 import { TextButton } from './components/TextButton';
 import { sliceKey, reducer, actions } from './slice';
-import { githubRepoFormSaga } from './saga';
+import { nestJsConnectorSaga } from './saga';
 import {
   selectUsername,
   selectRepos,
@@ -19,7 +19,7 @@ import { RepoErrorType } from './types';
 
 export function NestJsConnector() {
   useInjectReducer({ key: sliceKey, reducer: reducer });
-  useInjectSaga({ key: sliceKey, saga: githubRepoFormSaga });
+  useInjectSaga({ key: sliceKey, saga: nestJsConnectorSaga });
 
   const username = useSelector(selectUsername);
   const repos = useSelector(selectRepos);

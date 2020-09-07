@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import * as slice from '../slice';
 
-import { githubRepoFormSaga, getRepos } from '../saga';
+import { nestJsConnectorSaga, getRepos } from '../saga';
 import { RepoErrorType } from '../types';
 
 describe('getRepos Saga', () => {
@@ -99,10 +99,10 @@ describe('getRepos Saga', () => {
   });
 });
 
-describe('githubRepoFormSaga Saga', () => {
-  const githubRepoFormIterator = githubRepoFormSaga();
+describe('nestJsConnectorSaga Saga', () => {
+  const nestJsConnectorIterator = nestJsConnectorSaga();
   it('should start task to watch for loadRepos action', () => {
-    const takeLatestDescriptor = githubRepoFormIterator.next().value;
+    const takeLatestDescriptor = nestJsConnectorIterator.next().value;
     expect(takeLatestDescriptor).toEqual(
       takeLatest(slice.actions.loadRepos.type, getRepos),
     );

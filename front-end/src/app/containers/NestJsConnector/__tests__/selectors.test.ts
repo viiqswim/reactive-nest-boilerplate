@@ -18,7 +18,7 @@ describe('NestJsConnector selectors', () => {
   it('should select username', () => {
     const username = 'test';
     state = {
-      githubRepoForm: { ...initialState, username: username },
+      nestJsConnector: { ...initialState, username: username },
     };
     expect(selectors.selectUsername(state)).toEqual(username);
   });
@@ -26,7 +26,7 @@ describe('NestJsConnector selectors', () => {
   it('should select username', () => {
     const repo = { name: 'test' } as Repo;
     state = {
-      githubRepoForm: { ...initialState, repositories: [repo] },
+      nestJsConnector: { ...initialState, repositories: [repo] },
     };
     expect(selectors.selectRepos(state)).toEqual([repo]);
   });
@@ -34,7 +34,7 @@ describe('NestJsConnector selectors', () => {
   it('should select error', () => {
     const error = RepoErrorType.USER_NOT_FOUND;
     state = {
-      githubRepoForm: { ...initialState, error: error },
+      nestJsConnector: { ...initialState, error: error },
     };
     expect(selectors.selectError(state)).toEqual(error);
   });
@@ -42,7 +42,7 @@ describe('NestJsConnector selectors', () => {
   it('should select loading', () => {
     const loading = true;
     state = {
-      githubRepoForm: { ...initialState, loading: loading },
+      nestJsConnector: { ...initialState, loading: loading },
     };
     expect(selectors.selectLoading(state)).toEqual(loading);
   });

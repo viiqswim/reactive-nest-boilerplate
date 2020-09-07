@@ -18,14 +18,14 @@ import { Repo } from 'types/Repo';
 
 // The initial state of the NestJsConnector container
 export const initialState: ContainerState = {
-  username: 'react-boilerplate',
+  username: 'viiqswim',
   repositories: [],
   loading: false,
   error: null,
 };
 
-const githubRepoFormSlice = createSlice({
-  name: 'githubRepoForm',
+const nestJsConnectorSlice = createSlice({
+  name: 'nestJsConnector',
   initialState,
   reducers: {
     changeUsername(state, action: PayloadAction<string>) {
@@ -48,4 +48,4 @@ const githubRepoFormSlice = createSlice({
   },
 });
 
-export const { actions, reducer, name: sliceKey } = githubRepoFormSlice;
+export const { actions, reducer, name: sliceKey } = nestJsConnectorSlice;

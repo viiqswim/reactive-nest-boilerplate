@@ -40,14 +40,14 @@ describe('<NestJsConnector />', () => {
     component.unmount();
   });
 
-  it("should fetch repos on mount if username isn't empty", () => {
+  it("should fetch user on mount if username isn't empty", () => {
     component.unmount();
     component = renderNestJsConnector(store);
     expect(initialState.username.length).toBeGreaterThan(0);
     expect(store.getState().nestJsConnector.loading).toBe(true);
   });
 
-  it("shouldn't fetch repos on mount if username is empty", () => {
+  it("shouldn't fetch user on mount if username is empty", () => {
     store.dispatch(actions.changeUsername(''));
     store.dispatch(actions.userLoaded({}));
     component.unmount();
@@ -76,7 +76,7 @@ describe('<NestJsConnector />', () => {
     expect(component.container.querySelector('circle')).toBeInTheDocument();
   });
 
-  it('should display list when repos not empty', () => {
+  it('should display list when user not empty', () => {
     const firstName = 'first name';
     store.dispatch(actions.userLoaded({ id: 1, firstName } as any));
     expect(component.queryByText(firstName)).toBeInTheDocument();

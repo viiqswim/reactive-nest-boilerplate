@@ -6,7 +6,7 @@ import { User } from 'types/Repo';
 import { RepoErrorType } from './types';
 
 /**
- * Github repos request/response handler
+ * Github user request/response handler
  */
 export function* getUser() {
   yield delay(500);

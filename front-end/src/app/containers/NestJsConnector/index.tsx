@@ -37,7 +37,7 @@ export function NestJsConnector() {
     useEffect(effect, []);
   };
   useEffectOnMount(() => {
-    // When initial state username is not null, submit the form to load repos
+    // When initial state username is not null, submit the form to load user
     if (username && username.trim().length > 0) {
       dispatch(actions.loadRepos());
     }

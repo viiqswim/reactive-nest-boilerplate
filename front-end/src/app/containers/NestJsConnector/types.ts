@@ -1,14 +1,14 @@
-import { User } from 'types/Repo';
+import { User } from 'types/User';
 
 /* --- STATE --- */
 export interface NestJsConnectorState {
   userId: number;
   loading: boolean;
-  error?: RepoErrorType | null;
+  error?: UserErrorType | null;
   user: User;
 }
 
-export enum RepoErrorType {
+export enum UserErrorType {
   RESPONSE_ERROR = 1,
   USER_NOT_FOUND = 2,
   USER_ID_EMPTY = 3,

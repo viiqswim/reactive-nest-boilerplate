@@ -5,7 +5,7 @@ interface Props {
   name?: string;
 }
 
-export function RepoItem({ name }: Props) {
+export function UserItem({ name }: Props) {
   return (
     <Wrapper>
       <Name>{name}</Name>

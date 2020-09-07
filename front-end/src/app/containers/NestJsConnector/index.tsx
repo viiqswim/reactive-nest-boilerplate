@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
 import { FormLabel } from 'app/components/FormLabel';
 import { Input } from './components/Input';
-import { RepoItem } from './RepoItem';
+import { UserItem } from './UserItem';
 import { TextButton } from './components/TextButton';
 import { sliceKey, reducer, actions } from './slice';
 import { nestJsConnectorSaga } from './saga';
@@ -15,7 +15,7 @@ import {
   selectError,
 } from './selectors';
 import { LoadingIndicator } from 'app/components/LoadingIndicator';
-import { RepoErrorType } from './types';
+import { UserErrorType } from './types';
 
 export function NestJsConnector() {
   useInjectReducer({ key: sliceKey, reducer: reducer });
@@ -31,7 +31,7 @@ export function NestJsConnector() {
   const onChangeUserId = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const userId = Number(evt.currentTarget.value);
     dispatch(actions.changeUserId(userId));
-    dispatch(actions.loadRepos());
+    dispatch(actions.loadUsers());
   };
 
   const useEffectOnMount = (effect: React.EffectCallback) => {
@@ -40,7 +40,7 @@ export function NestJsConnector() {
   useEffectOnMount(() => {
     // When initial state userId is not null, submit the form to load user
     if (userId) {
-      dispatch(actions.loadRepos());
+      dispatch(actions.loadUsers());
     }
   });
 
@@ -67,7 +67,7 @@ export function NestJsConnector() {
       </FormGroup>
       {user?.firstName ? (
         <List>
-          <RepoItem key={user.id} name={user.firstName} />
+          <UserItem key={user.id} name={user.firstName} />
         </List>
       ) : error ? (
         <ErrorText>{userErrorText(error)}</ErrorText>
@@ -76,13 +76,13 @@ export function NestJsConnector() {
   );
 }
 
-export const userErrorText = (error: RepoErrorType) => {
+export const userErrorText = (error: UserErrorType) => {
   switch (error) {
-    case RepoErrorType.USER_NOT_FOUND:
+    case UserErrorType.USER_NOT_FOUND:
       return 'There is no such user 😞';
-    case RepoErrorType.USER_ID_EMPTY:
+    case UserErrorType.USER_ID_EMPTY:
       return 'Type any user ID';
-    case RepoErrorType.USER_HAS_NO_USER:
+    case UserErrorType.USER_HAS_NO_USER:
       return 'User does not exist';
     default:
       return 'An error has occurred!';

@@ -7,7 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { NestJsConnector, userErrorText } from '..';
 import { configureAppStore } from 'store/configureStore';
 import { actions, initialState } from '../slice';
-import { RepoErrorType } from '../types';
+import { UserErrorType } from '../types';
 
 function* mocknestJsConnectorSaga() {}
 
@@ -74,7 +74,7 @@ describe('<NestJsConnector />', () => {
   });
 
   it('should display loading indicator when state is loading', () => {
-    store.dispatch(actions.loadRepos());
+    store.dispatch(actions.loadUsers());
     expect(component.container.querySelector('circle')).toBeInTheDocument();
   });
 
@@ -85,19 +85,19 @@ describe('<NestJsConnector />', () => {
   });
 
   it('should display error when userError fired', () => {
-    let error = RepoErrorType.USER_NOT_FOUND;
+    let error = UserErrorType.USER_NOT_FOUND;
     store.dispatch(actions.userError(error));
     expect(component.queryByText(userErrorText(error))).toBeInTheDocument();
 
-    error = RepoErrorType.USER_HAS_NO_USER;
+    error = UserErrorType.USER_HAS_NO_USER;
     store.dispatch(actions.userError(error));
     expect(component.queryByText(userErrorText(error))).toBeInTheDocument();
 
-    error = RepoErrorType.USER_ID_EMPTY;
+    error = UserErrorType.USER_ID_EMPTY;
     store.dispatch(actions.userError(error));
     expect(component.queryByText(userErrorText(error))).toBeInTheDocument();
 
-    error = RepoErrorType.RESPONSE_ERROR;
+    error = UserErrorType.RESPONSE_ERROR;
     store.dispatch(actions.userError(error));
     expect(component.queryByText(userErrorText(error))).toBeInTheDocument();
   });

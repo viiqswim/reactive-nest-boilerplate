@@ -81,8 +81,3 @@ export interface Repo extends ReposListForksResponseItem {
   open_issues: number;
   watchers: number;
 }
-
-export interface User {
-  id?: number;
-  firstName?: string;
-}

@@ -1,8 +1,8 @@
 import * as selectors from '../selectors';
 import { RootState } from 'types';
-import { RepoErrorType } from '../types';
+import { UserErrorType } from '../types';
 import { initialState } from '../slice';
-import { User } from 'types/Repo';
+import { User } from 'types/User';
 
 describe('NestJsConnector selectors', () => {
   let state: RootState = {};
@@ -32,7 +32,7 @@ describe('NestJsConnector selectors', () => {
   });
 
   it('should select error', () => {
-    const error = RepoErrorType.USER_NOT_FOUND;
+    const error = UserErrorType.USER_NOT_FOUND;
     state = {
       nestJsConnector: { ...initialState, error: error },
     };

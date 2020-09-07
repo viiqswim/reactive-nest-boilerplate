@@ -2,8 +2,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 import * as slice from '../slice';
 
 import { nestJsConnectorSaga, getUser } from '../saga';
-import { RepoErrorType } from '../types';
-import { User } from 'types/Repo';
+import { UserErrorType } from '../types';
+import { User } from 'types/User';
 
 describe('getUser Saga', () => {
   let userId: any;
@@ -25,7 +25,7 @@ describe('getUser Saga', () => {
     userId = '';
     const putDescriptor = getUserIterator.next(userId).value;
     expect(putDescriptor).toEqual(
-      put(slice.actions.userError(RepoErrorType.USER_ID_EMPTY)),
+      put(slice.actions.userError(UserErrorType.USER_ID_EMPTY)),
     );
 
     const iteration = getUserIterator.next();
@@ -55,7 +55,7 @@ describe('getUser Saga', () => {
     const putDescriptor = getUserIterator.throw({ response: { status: 404 } })
       .value;
     expect(putDescriptor).toEqual(
-      put(slice.actions.userError(RepoErrorType.USER_NOT_FOUND)),
+      put(slice.actions.userError(UserErrorType.USER_NOT_FOUND)),
     );
   });
   it('should dispatch the user has no user error', () => {
@@ -67,7 +67,7 @@ describe('getUser Saga', () => {
 
     const putDescriptor = getUserIterator.next(user).value;
     expect(putDescriptor).toEqual(
-      put(slice.actions.userError(RepoErrorType.USER_HAS_NO_USER)),
+      put(slice.actions.userError(UserErrorType.USER_HAS_NO_USER)),
     );
   });
 
@@ -79,17 +79,17 @@ describe('getUser Saga', () => {
 
     const putDescriptor = getUserIterator.throw(new Error('some error')).value;
     expect(putDescriptor).toEqual(
-      put(slice.actions.userError(RepoErrorType.RESPONSE_ERROR)),
+      put(slice.actions.userError(UserErrorType.RESPONSE_ERROR)),
     );
   });
 });
 
 describe('nestJsConnectorSaga Saga', () => {
   const nestJsConnectorIterator = nestJsConnectorSaga();
-  it('should start task to watch for loadRepos action', () => {
+  it('should start task to watch for loadUsers action', () => {
     const takeLatestDescriptor = nestJsConnectorIterator.next().value;
     expect(takeLatestDescriptor).toEqual(
-      takeLatest(slice.actions.loadRepos.type, getUser),
+      takeLatest(slice.actions.loadUsers.type, getUser),
     );
   });
 });

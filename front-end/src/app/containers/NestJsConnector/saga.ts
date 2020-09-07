@@ -1,6 +1,6 @@
 import { call, put, select, takeLatest, delay } from 'redux-saga/effects';
 import { request } from 'utils/request';
-import { selectUsername } from './selectors';
+import { selectUserId } from './selectors';
 import { actions } from './slice';
 import { User } from 'types/Repo';
 import { RepoErrorType } from './types';
@@ -11,7 +11,7 @@ import { RepoErrorType } from './types';
 export function* getUser() {
   yield delay(500);
   // Select userId from store
-  const userId: string = yield select(selectUsername);
+  const userId: string = yield select(selectUserId);
   if (userId.length === 0) {
     yield put(actions.userError(RepoErrorType.USERNAME_EMPTY));
     return;

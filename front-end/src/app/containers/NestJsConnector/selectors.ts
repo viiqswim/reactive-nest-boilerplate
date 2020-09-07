@@ -7,7 +7,7 @@ import { initialState } from './slice';
 const selectDomain = (state: RootState) =>
   state.nestJsConnector || initialState;
 
-export const selectUsername = createSelector(
+export const selectUserId = createSelector(
   [selectDomain],
   nestJsConnectorState => nestJsConnectorState.userId,
 );

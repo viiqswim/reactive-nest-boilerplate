@@ -12,7 +12,7 @@ describe('NestJsConnector selectors', () => {
   });
 
   it('should select the initial state', () => {
-    expect(selectors.selectUsername(state)).toEqual(initialState.userId);
+    expect(selectors.selectUserId(state)).toEqual(initialState.userId);
   });
 
   it('should select userId', () => {
@@ -20,7 +20,7 @@ describe('NestJsConnector selectors', () => {
     state = {
       nestJsConnector: { ...initialState, userId: userId },
     };
-    expect(selectors.selectUsername(state)).toEqual(userId);
+    expect(selectors.selectUserId(state)).toEqual(userId);
   });
 
   it('should select userId', () => {

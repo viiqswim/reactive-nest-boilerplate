@@ -9,7 +9,7 @@ import { TextButton } from './components/TextButton';
 import { sliceKey, reducer, actions } from './slice';
 import { nestJsConnectorSaga } from './saga';
 import {
-  selectUsername,
+  selectUserId,
   selectUser,
   selectLoading,
   selectError,
@@ -21,14 +21,14 @@ export function NestJsConnector() {
   useInjectReducer({ key: sliceKey, reducer: reducer });
   useInjectSaga({ key: sliceKey, saga: nestJsConnectorSaga });
 
-  const userId = useSelector(selectUsername);
+  const userId = useSelector(selectUserId);
   const user = useSelector(selectUser);
   const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
   const dispatch = useDispatch();
 
-  const onChangeUsername = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeUserId = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const userId = Number(evt.currentTarget.value);
     dispatch(actions.changeUserId(userId));
     dispatch(actions.loadRepos());
@@ -60,7 +60,7 @@ export function NestJsConnector() {
             type="text"
             placeholder="Type any user ID"
             value={userId}
-            onChange={onChangeUsername}
+            onChange={onChangeUserId}
           />
           {isLoading && <LoadingIndicator small />}
         </InputWrapper>

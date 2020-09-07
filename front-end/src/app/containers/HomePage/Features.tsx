@@ -23,6 +23,8 @@ import { useTranslation } from 'react-i18next';
 import { translations } from 'locales/i18n';
 import { Link } from 'app/components/Link';
 
+import { Button, DatePicker } from 'antd';
+
 export function Features() {
   const { t } = useTranslation();
 
@@ -71,6 +73,14 @@ export function Features() {
               Redux Dev Tools.
             </P>
             <GithubRepoForm />
+          </Content>
+        </Feature>
+        <Feature>
+          <StateIcon className="feature-icon" />
+          <Content>
+            <SubTitle>Ant Design Component Library</SubTitle>
+            <Button type="primary">PRESS ME</Button>
+            <DatePicker placeholder="select date" />
           </Content>
         </Feature>
         <Feature>

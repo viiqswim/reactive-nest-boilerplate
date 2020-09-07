@@ -3,17 +3,23 @@ import * as React from "react";
 import {
   Admin,
   Resource,
-  ListGuesser,
   ShowGuesser,
-  EditGuesser,
+  // ListGuesser,
+  // EditGuesser,
 } from 'react-admin';
 import crudProvider from 'ra-data-nestjsx-crud'
+
+import {
+  CompaniesList,
+  CompaniesCreate,
+  CompaniesEdit,
+} from '../components/Companies';
 
 const dataProvider = crudProvider('http://localhost:3001');
 
 const App = () => (
     <Admin dataProvider={dataProvider}>
-        <Resource name="companies" list={ListGuesser} show={ShowGuesser} edit={EditGuesser} />
+        <Resource name="companies" list={CompaniesList} show={ShowGuesser} edit={CompaniesEdit} create={CompaniesCreate}/>
     </Admin>
 );
 export default App;

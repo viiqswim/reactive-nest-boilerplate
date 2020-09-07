@@ -1,4 +1,3 @@
-// in src/App.js
 import * as React from "react";
 import {
   Admin,

@@ -1,34 +1,34 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import * as slice from '../slice';
 
-import { nestJsConnectorSaga, getRepos } from '../saga';
+import { nestJsConnectorSaga, getUser } from '../saga';
 import { RepoErrorType } from '../types';
 import { User } from 'types/Repo';
 
-describe('getRepos Saga', () => {
+describe('getUser Saga', () => {
   let username: any;
   let user: User;
-  let getReposIterator: any;
+  let getUserIterator: any;
 
   // We have to test twice, once for a successful load and once for an unsuccessful one
   // so we do all the stuff that happens beforehand automatically in the beforeEach
   beforeEach(() => {
-    getReposIterator = getRepos();
-    const delayDescriptor = getReposIterator.next().value;
+    getUserIterator = getUser();
+    const delayDescriptor = getUserIterator.next().value;
     expect(delayDescriptor).toMatchSnapshot();
 
-    const selectDescriptor = getReposIterator.next().value;
+    const selectDescriptor = getUserIterator.next().value;
     expect(selectDescriptor).toMatchSnapshot();
   });
 
   it('should return error if username is empty', () => {
     username = '';
-    const putDescriptor = getReposIterator.next(username).value;
+    const putDescriptor = getUserIterator.next(username).value;
     expect(putDescriptor).toEqual(
       put(slice.actions.repoError(RepoErrorType.USERNAME_EMPTY)),
     );
 
-    const iteration = getReposIterator.next();
+    const iteration = getUserIterator.next();
     expect(iteration.done).toBe(true);
   });
 
@@ -39,20 +39,20 @@ describe('getRepos Saga', () => {
       firstName: 'repo1',
     };
 
-    const requestDescriptor = getReposIterator.next(username).value;
+    const requestDescriptor = getUserIterator.next(username).value;
     expect(requestDescriptor).toMatchSnapshot();
 
-    const putDescriptor = getReposIterator.next(user).value;
+    const putDescriptor = getUserIterator.next(user).value;
     expect(putDescriptor).toEqual(put(slice.actions.userLoaded(user)));
   });
 
   it('should dispatch the user not found error', () => {
     username = 'test';
 
-    const requestDescriptor = getReposIterator.next(username).value;
+    const requestDescriptor = getUserIterator.next(username).value;
     expect(requestDescriptor).toMatchSnapshot();
 
-    const putDescriptor = getReposIterator.throw({ response: { status: 404 } })
+    const putDescriptor = getUserIterator.throw({ response: { status: 404 } })
       .value;
     expect(putDescriptor).toEqual(
       put(slice.actions.repoError(RepoErrorType.USER_NOT_FOUND)),
@@ -62,10 +62,10 @@ describe('getRepos Saga', () => {
     username = 'test';
     user = {};
 
-    const requestDescriptor = getReposIterator.next(username).value;
+    const requestDescriptor = getUserIterator.next(username).value;
     expect(requestDescriptor).toMatchSnapshot();
 
-    const putDescriptor = getReposIterator.next(user).value;
+    const putDescriptor = getUserIterator.next(user).value;
     expect(putDescriptor).toEqual(
       put(slice.actions.repoError(RepoErrorType.USER_HAS_NO_REPO)),
     );
@@ -74,10 +74,10 @@ describe('getRepos Saga', () => {
   it('should dispatch the response error', () => {
     username = 'test';
 
-    const requestDescriptor = getReposIterator.next(username).value;
+    const requestDescriptor = getUserIterator.next(username).value;
     expect(requestDescriptor).toMatchSnapshot();
 
-    const putDescriptor = getReposIterator.throw(new Error('some error')).value;
+    const putDescriptor = getUserIterator.throw(new Error('some error')).value;
     expect(putDescriptor).toEqual(
       put(slice.actions.repoError(RepoErrorType.RESPONSE_ERROR)),
     );
@@ -89,7 +89,7 @@ describe('nestJsConnectorSaga Saga', () => {
   it('should start task to watch for loadRepos action', () => {
     const takeLatestDescriptor = nestJsConnectorIterator.next().value;
     expect(takeLatestDescriptor).toEqual(
-      takeLatest(slice.actions.loadRepos.type, getRepos),
+      takeLatest(slice.actions.loadRepos.type, getUser),
     );
   });
 });

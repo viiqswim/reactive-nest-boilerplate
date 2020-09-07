@@ -78,7 +78,7 @@ export function Features() {
         <Feature>
           <StateIcon className="feature-icon" />
           <Content>
-            <SubTitle>Ant Design Component Library</SubTitle>
+            <SubTitle>Component Library - Ant Design </SubTitle>
             <Button type="primary">PRESS ME</Button>
             <DatePicker placeholder="select date" />
           </Content>

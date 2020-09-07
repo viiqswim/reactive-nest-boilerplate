@@ -13,7 +13,7 @@ export function* getUser() {
   // Select username from store
   const username: string = yield select(selectUsername);
   if (username.length === 0) {
-    yield put(actions.repoError(RepoErrorType.USERNAME_EMPTY));
+    yield put(actions.userError(RepoErrorType.USERNAME_EMPTY));
     return;
   }
   const requestURL = `http://localhost:3001/users/${username}`;
@@ -24,13 +24,13 @@ export function* getUser() {
     if (user.id) {
       yield put(actions.userLoaded(user));
     } else {
-      yield put(actions.repoError(RepoErrorType.USER_HAS_NO_REPO));
+      yield put(actions.userError(RepoErrorType.USER_HAS_NO_REPO));
     }
   } catch (err) {
     if (err.response?.status === 404) {
-      yield put(actions.repoError(RepoErrorType.USER_NOT_FOUND));
+      yield put(actions.userError(RepoErrorType.USER_NOT_FOUND));
     } else {
-      yield put(actions.repoError(RepoErrorType.RESPONSE_ERROR));
+      yield put(actions.userError(RepoErrorType.RESPONSE_ERROR));
     }
   }
 }

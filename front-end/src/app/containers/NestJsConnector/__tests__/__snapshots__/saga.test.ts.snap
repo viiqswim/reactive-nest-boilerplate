@@ -42,7 +42,7 @@ Object {
 }
 `;
 
-exports[`getUser Saga should dispatch the user has no repo error 1`] = `
+exports[`getUser Saga should dispatch the user has no user error 1`] = `
 Object {
   "@@redux-saga/IO": true,
   "combinator": false,
@@ -57,7 +57,7 @@ Object {
 }
 `;
 
-exports[`getUser Saga should dispatch the user has no repo error 2`] = `
+exports[`getUser Saga should dispatch the user has no user error 2`] = `
 Object {
   "@@redux-saga/IO": true,
   "combinator": false,
@@ -69,7 +69,7 @@ Object {
 }
 `;
 
-exports[`getUser Saga should dispatch the user has no repo error 3`] = `
+exports[`getUser Saga should dispatch the user has no user error 3`] = `
 Object {
   "@@redux-saga/IO": true,
   "combinator": false,

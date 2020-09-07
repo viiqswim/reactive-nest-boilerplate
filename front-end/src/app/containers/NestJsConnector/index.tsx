@@ -69,13 +69,13 @@ export function NestJsConnector() {
           <RepoItem key={user.id} name={user.firstName} />
         </List>
       ) : error ? (
-        <ErrorText>{repoErrorText(error)}</ErrorText>
+        <ErrorText>{userErrorText(error)}</ErrorText>
       ) : null}
     </Wrapper>
   );
 }
 
-export const repoErrorText = (error: RepoErrorType) => {
+export const userErrorText = (error: RepoErrorType) => {
   switch (error) {
     case RepoErrorType.USER_NOT_FOUND:
       return 'There is no such user 😞';

@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styles/theme/ThemeProvider';
 import { HelmetProvider } from 'react-helmet-async';
-import { NestJsConnector, repoErrorText } from '..';
+import { NestJsConnector, userErrorText } from '..';
 import { configureAppStore } from 'store/configureStore';
 import { actions, initialState } from '../slice';
 import { RepoErrorType } from '../types';
@@ -82,21 +82,21 @@ describe('<NestJsConnector />', () => {
     expect(component.queryByText(firstName)).toBeInTheDocument();
   });
 
-  it('should display error when repoError fired', () => {
+  it('should display error when userError fired', () => {
     let error = RepoErrorType.USER_NOT_FOUND;
-    store.dispatch(actions.repoError(error));
-    expect(component.queryByText(repoErrorText(error))).toBeInTheDocument();
+    store.dispatch(actions.userError(error));
+    expect(component.queryByText(userErrorText(error))).toBeInTheDocument();
 
     error = RepoErrorType.USER_HAS_NO_REPO;
-    store.dispatch(actions.repoError(error));
-    expect(component.queryByText(repoErrorText(error))).toBeInTheDocument();
+    store.dispatch(actions.userError(error));
+    expect(component.queryByText(userErrorText(error))).toBeInTheDocument();
 
     error = RepoErrorType.USERNAME_EMPTY;
-    store.dispatch(actions.repoError(error));
-    expect(component.queryByText(repoErrorText(error))).toBeInTheDocument();
+    store.dispatch(actions.userError(error));
+    expect(component.queryByText(userErrorText(error))).toBeInTheDocument();
 
     error = RepoErrorType.RESPONSE_ERROR;
-    store.dispatch(actions.repoError(error));
-    expect(component.queryByText(repoErrorText(error))).toBeInTheDocument();
+    store.dispatch(actions.userError(error));
+    expect(component.queryByText(userErrorText(error))).toBeInTheDocument();
   });
 });

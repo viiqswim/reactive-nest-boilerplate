@@ -7,17 +7,17 @@ const renderRepoItem = (props: Parameters<typeof RepoItem>[number]) =>
 
 describe('<RepoItem />', () => {
   it('should match the snapshot', () => {
-    const repoItem = renderRepoItem({
+    const userItem = renderRepoItem({
       name: 'test',
     });
-    expect(repoItem.container.firstChild).toMatchSnapshot();
+    expect(userItem.container.firstChild).toMatchSnapshot();
   });
 
   it('should have props displayed', () => {
     const name = 'test';
-    const repoItem = renderRepoItem({
+    const userItem = renderRepoItem({
       name: name,
     });
-    expect(repoItem.queryByText(name)).toBeInTheDocument();
+    expect(userItem.queryByText(name)).toBeInTheDocument();
   });
 });

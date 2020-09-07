@@ -45,13 +45,13 @@ describe('NestJsConnector slice', () => {
     });
   });
 
-  it('should handle repoError', () => {
-    const repoError = RepoErrorType.USER_NOT_FOUND;
-    expect(slice.reducer(state, slice.actions.repoError(repoError))).toEqual<
+  it('should handle userError', () => {
+    const userError = RepoErrorType.USER_NOT_FOUND;
+    expect(slice.reducer(state, slice.actions.userError(userError))).toEqual<
       ContainerState
     >({
       ...slice.initialState,
-      error: repoError,
+      error: userError,
     });
   });
 });

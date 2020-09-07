@@ -41,7 +41,7 @@ const nestJsConnectorSlice = createSlice({
       state.user = user;
       state.loading = false;
     },
-    repoError(state, action: PayloadAction<RepoErrorType>) {
+    userError(state, action: PayloadAction<RepoErrorType>) {
       state.error = action.payload;
       state.loading = false;
     },

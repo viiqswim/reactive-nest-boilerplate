@@ -25,7 +25,7 @@ describe('getUser Saga', () => {
     username = '';
     const putDescriptor = getUserIterator.next(username).value;
     expect(putDescriptor).toEqual(
-      put(slice.actions.repoError(RepoErrorType.USERNAME_EMPTY)),
+      put(slice.actions.userError(RepoErrorType.USERNAME_EMPTY)),
     );
 
     const iteration = getUserIterator.next();
@@ -36,7 +36,7 @@ describe('getUser Saga', () => {
     username = 'test';
     user = {
       id: 1,
-      firstName: 'repo1',
+      firstName: 'user1',
     };
 
     const requestDescriptor = getUserIterator.next(username).value;
@@ -55,10 +55,10 @@ describe('getUser Saga', () => {
     const putDescriptor = getUserIterator.throw({ response: { status: 404 } })
       .value;
     expect(putDescriptor).toEqual(
-      put(slice.actions.repoError(RepoErrorType.USER_NOT_FOUND)),
+      put(slice.actions.userError(RepoErrorType.USER_NOT_FOUND)),
     );
   });
-  it('should dispatch the user has no repo error', () => {
+  it('should dispatch the user has no user error', () => {
     username = 'test';
     user = {};
 
@@ -67,7 +67,7 @@ describe('getUser Saga', () => {
 
     const putDescriptor = getUserIterator.next(user).value;
     expect(putDescriptor).toEqual(
-      put(slice.actions.repoError(RepoErrorType.USER_HAS_NO_REPO)),
+      put(slice.actions.userError(RepoErrorType.USER_HAS_NO_REPO)),
     );
   });
 
@@ -79,7 +79,7 @@ describe('getUser Saga', () => {
 
     const putDescriptor = getUserIterator.throw(new Error('some error')).value;
     expect(putDescriptor).toEqual(
-      put(slice.actions.repoError(RepoErrorType.RESPONSE_ERROR)),
+      put(slice.actions.userError(RepoErrorType.RESPONSE_ERROR)),
     );
   });
 });

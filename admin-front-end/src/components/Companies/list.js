@@ -8,8 +8,10 @@ import {
   DeleteButton,
 } from 'react-admin';
 
+import { CompaniesFilter } from './filter';
+
 export const CompaniesList = props => (
-  <List {...props}>
+  <List filters={<CompaniesFilter />} {...props}>
     <Datagrid>
       <TextField source="id" />
       <TextField source="name" />

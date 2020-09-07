@@ -16,7 +16,7 @@ export function* getUser() {
     yield put(actions.userError(RepoErrorType.USER_ID_EMPTY));
     return;
   }
-  const requestURL = `http://localhost:3001/users/${userId}`;
+  const requestURL = `${process.env.REACT_APP_BACK_END_URL}/users/${userId}`;
 
   try {
     // Call our request helper (see 'utils/request')

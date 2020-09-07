@@ -7,6 +7,7 @@ import {
   // ListGuesser,
   // EditGuesser,
 } from 'react-admin';
+import BusinessIcon from '@material-ui/icons/Business';
 import crudProvider from 'ra-data-nestjsx-crud'
 
 import {
@@ -19,7 +20,7 @@ const dataProvider = crudProvider('http://localhost:3001');
 
 const App = () => (
     <Admin dataProvider={dataProvider}>
-        <Resource name="companies" list={CompaniesList} show={ShowGuesser} edit={CompaniesEdit} create={CompaniesCreate}/>
+        <Resource name="companies" list={CompaniesList} show={ShowGuesser} edit={CompaniesEdit} create={CompaniesCreate} icon={BusinessIcon} />
     </Admin>
 );
 export default App;

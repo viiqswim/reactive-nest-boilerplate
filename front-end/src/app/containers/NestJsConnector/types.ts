@@ -12,7 +12,7 @@ export enum RepoErrorType {
   RESPONSE_ERROR = 1,
   USER_NOT_FOUND = 2,
   USER_ID_EMPTY = 3,
-  USER_HAS_NO_REPO = 4,
+  USER_HAS_NO_USER = 4,
 }
 
 /*

@@ -24,7 +24,7 @@ export function* getUser() {
     if (user.id) {
       yield put(actions.userLoaded(user));
     } else {
-      yield put(actions.userError(RepoErrorType.USER_HAS_NO_REPO));
+      yield put(actions.userError(RepoErrorType.USER_HAS_NO_USER));
     }
   } catch (err) {
     if (err.response?.status === 404) {

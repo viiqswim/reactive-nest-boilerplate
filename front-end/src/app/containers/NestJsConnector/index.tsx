@@ -82,7 +82,7 @@ export const userErrorText = (error: RepoErrorType) => {
       return 'There is no such user 😞';
     case RepoErrorType.USER_ID_EMPTY:
       return 'Type any user ID';
-    case RepoErrorType.USER_HAS_NO_REPO:
+    case RepoErrorType.USER_HAS_NO_USER:
       return 'User does not exist';
     default:
       return 'An error has occurred!';

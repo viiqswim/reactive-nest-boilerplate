@@ -67,7 +67,7 @@ describe('getUser Saga', () => {
 
     const putDescriptor = getUserIterator.next(user).value;
     expect(putDescriptor).toEqual(
-      put(slice.actions.userError(RepoErrorType.USER_HAS_NO_REPO)),
+      put(slice.actions.userError(RepoErrorType.USER_HAS_NO_USER)),
     );
   });
 

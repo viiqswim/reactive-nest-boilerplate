@@ -11,7 +11,7 @@ export interface NestJsConnectorState {
 export enum RepoErrorType {
   RESPONSE_ERROR = 1,
   USER_NOT_FOUND = 2,
-  USERNAME_EMPTY = 3,
+  USER_ID_EMPTY = 3,
   USER_HAS_NO_REPO = 4,
 }
 

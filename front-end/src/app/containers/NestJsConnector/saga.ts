@@ -13,7 +13,7 @@ export function* getUser() {
   // Select userId from store
   const userId: string = yield select(selectUserId);
   if (userId.length === 0) {
-    yield put(actions.userError(RepoErrorType.USERNAME_EMPTY));
+    yield put(actions.userError(RepoErrorType.USER_ID_EMPTY));
     return;
   }
   const requestURL = `http://localhost:3001/users/${userId}`;

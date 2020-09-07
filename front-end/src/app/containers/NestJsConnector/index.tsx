@@ -80,7 +80,7 @@ export const userErrorText = (error: RepoErrorType) => {
   switch (error) {
     case RepoErrorType.USER_NOT_FOUND:
       return 'There is no such user 😞';
-    case RepoErrorType.USERNAME_EMPTY:
+    case RepoErrorType.USER_ID_EMPTY:
       return 'Type any user ID';
     case RepoErrorType.USER_HAS_NO_REPO:
       return 'User does not exist';

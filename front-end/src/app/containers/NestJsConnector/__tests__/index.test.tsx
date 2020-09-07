@@ -93,7 +93,7 @@ describe('<NestJsConnector />', () => {
     store.dispatch(actions.userError(error));
     expect(component.queryByText(userErrorText(error))).toBeInTheDocument();
 
-    error = RepoErrorType.USERNAME_EMPTY;
+    error = RepoErrorType.USER_ID_EMPTY;
     store.dispatch(actions.userError(error));
     expect(component.queryByText(userErrorText(error))).toBeInTheDocument();
 

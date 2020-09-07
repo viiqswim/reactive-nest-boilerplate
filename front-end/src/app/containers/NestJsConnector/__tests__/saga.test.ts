@@ -25,7 +25,7 @@ describe('getUser Saga', () => {
     userId = '';
     const putDescriptor = getUserIterator.next(userId).value;
     expect(putDescriptor).toEqual(
-      put(slice.actions.userError(RepoErrorType.USERNAME_EMPTY)),
+      put(slice.actions.userError(RepoErrorType.USER_ID_EMPTY)),
     );
 
     const iteration = getUserIterator.next();

@@ -10,13 +10,13 @@ import { RepoErrorType } from './types';
  */
 export function* getUser() {
   yield delay(500);
-  // Select username from store
-  const username: string = yield select(selectUsername);
-  if (username.length === 0) {
+  // Select userId from store
+  const userId: string = yield select(selectUsername);
+  if (userId.length === 0) {
     yield put(actions.userError(RepoErrorType.USERNAME_EMPTY));
     return;
   }
-  const requestURL = `http://localhost:3001/users/${username}`;
+  const requestURL = `http://localhost:3001/users/${userId}`;
 
   try {
     // Call our request helper (see 'utils/request')

@@ -9,7 +9,7 @@ const selectDomain = (state: RootState) =>
 
 export const selectUsername = createSelector(
   [selectDomain],
-  nestJsConnectorState => nestJsConnectorState.username,
+  nestJsConnectorState => nestJsConnectorState.userId,
 );
 
 export const selectLoading = createSelector(

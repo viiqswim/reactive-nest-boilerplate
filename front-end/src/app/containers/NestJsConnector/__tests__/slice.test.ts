@@ -19,7 +19,7 @@ describe('NestJsConnector slice', () => {
       ContainerState
     >({
       ...slice.initialState,
-      username: text,
+      userId: text,
     });
   });
 

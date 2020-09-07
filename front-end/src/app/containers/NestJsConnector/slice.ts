@@ -18,7 +18,7 @@ import { User } from 'types/Repo';
 
 // The initial state of the NestJsConnector container
 export const initialState: ContainerState = {
-  username: 'viiqswim',
+  userId: 'viiqswim',
   user: {},
   loading: false,
   error: null,
@@ -29,7 +29,7 @@ const nestJsConnectorSlice = createSlice({
   initialState,
   reducers: {
     changeUsername(state, action: PayloadAction<string>) {
-      state.username = action.payload;
+      state.userId = action.payload;
     },
     loadRepos(state) {
       state.loading = true;

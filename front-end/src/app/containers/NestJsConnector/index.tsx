@@ -21,7 +21,7 @@ export function NestJsConnector() {
   useInjectReducer({ key: sliceKey, reducer: reducer });
   useInjectSaga({ key: sliceKey, saga: nestJsConnectorSaga });
 
-  const username = useSelector(selectUsername);
+  const userId = useSelector(selectUsername);
   const user = useSelector(selectUser);
   const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);
@@ -37,8 +37,8 @@ export function NestJsConnector() {
     useEffect(effect, []);
   };
   useEffectOnMount(() => {
-    // When initial state username is not null, submit the form to load user
-    if (username && username.trim().length > 0) {
+    // When initial state userId is not null, submit the form to load user
+    if (userId && userId.trim().length > 0) {
       dispatch(actions.loadRepos());
     }
   });
@@ -58,7 +58,7 @@ export function NestJsConnector() {
           <Input
             type="text"
             placeholder="Type any user ID"
-            value={username}
+            value={userId}
             onChange={onChangeUsername}
           />
           {isLoading && <LoadingIndicator small />}

@@ -40,14 +40,14 @@ describe('<NestJsConnector />', () => {
     component.unmount();
   });
 
-  it("should fetch user on mount if username isn't empty", () => {
+  it("should fetch user on mount if userId isn't empty", () => {
     component.unmount();
     component = renderNestJsConnector(store);
-    expect(initialState.username.length).toBeGreaterThan(0);
+    expect(initialState.userId.length).toBeGreaterThan(0);
     expect(store.getState().nestJsConnector.loading).toBe(true);
   });
 
-  it("shouldn't fetch user on mount if username is empty", () => {
+  it("shouldn't fetch user on mount if userId is empty", () => {
     store.dispatch(actions.changeUsername(''));
     store.dispatch(actions.userLoaded({}));
     component.unmount();
@@ -55,13 +55,13 @@ describe('<NestJsConnector />', () => {
     expect(store.getState().nestJsConnector.loading).toBe(false);
   });
 
-  it('should dispatch action on username change', () => {
+  it('should dispatch action on userId change', () => {
     const input = component.container.querySelector('input');
     fireEvent.change(input!, { target: { value: 'test' } });
     expect(store.getState().nestJsConnector.loading).toBe(true);
   });
 
-  it('should change username field value on action', () => {
+  it('should change userId field value on action', () => {
     const value = 'test';
     const form = renderNestJsConnector(store);
 

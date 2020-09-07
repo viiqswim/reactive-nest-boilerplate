@@ -13,13 +13,13 @@ describe('NestJsConnector slice', () => {
     expect(slice.reducer(undefined, { type: '' })).toEqual(state);
   });
 
-  it('should handle changeUsername', () => {
-    const text = 'test';
-    expect(slice.reducer(state, slice.actions.changeUsername(text))).toEqual<
+  it('should handle changeUserId', () => {
+    const userId = 1;
+    expect(slice.reducer(state, slice.actions.changeUserId(userId))).toEqual<
       ContainerState
     >({
       ...slice.initialState,
-      userId: text,
+      userId: userId,
     });
   });
 

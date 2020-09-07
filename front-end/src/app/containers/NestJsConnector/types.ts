@@ -2,7 +2,7 @@ import { User } from 'types/Repo';
 
 /* --- STATE --- */
 export interface NestJsConnectorState {
-  userId: string;
+  userId: number;
   loading: boolean;
   error?: RepoErrorType | null;
   user: User;

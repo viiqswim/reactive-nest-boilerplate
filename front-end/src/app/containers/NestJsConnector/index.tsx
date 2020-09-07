@@ -29,7 +29,8 @@ export function NestJsConnector() {
   const dispatch = useDispatch();
 
   const onChangeUsername = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(actions.changeUsername(evt.currentTarget.value));
+    const userId = Number(evt.currentTarget.value);
+    dispatch(actions.changeUserId(userId));
     dispatch(actions.loadRepos());
   };
 
@@ -38,7 +39,7 @@ export function NestJsConnector() {
   };
   useEffectOnMount(() => {
     // When initial state userId is not null, submit the form to load user
-    if (userId && userId.trim().length > 0) {
+    if (userId) {
       dispatch(actions.loadRepos());
     }
   });

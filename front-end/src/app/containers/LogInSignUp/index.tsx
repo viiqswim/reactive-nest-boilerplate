@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components/macro';
 import { Form, Input, Button } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
 import { UserItem } from './UserItem';
-import { TextButton } from './components/TextButton';
 import { sliceKey, reducer, actions } from './slice';
 import { logInSignUpSaga } from './saga';
 import {
@@ -50,39 +50,59 @@ export function LogInSignUp() {
   });
 
   return (
-    <Wrapper>
+    <>
       {isLoggedIn && <h1> You're logged in</h1>}
-      <Form
-        {...layout}
-        name="basic"
-        initialValues={{ remember: true }}
-        onFinish={onChangeUserEmail}
-      >
-        <Form.Item
-          label="User Email"
-          name="userEmail"
-          rules={[{ required: true, message: 'Please input your email!' }]}
+      {!isLoggedIn && (
+        <Form
+          name="normal_login"
+          className="login-form"
+          initialValues={{ remember: true }}
+          onFinish={onChangeUserEmail}
         >
-          <Input />
-        </Form.Item>
+          <Form.Item
+            name="userEmail"
+            rules={[{ required: true, message: 'Please input your email!' }]}
+          >
+            <Input
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              placeholder="Email"
+              size="large"
+              disabled={isLoading}
+            />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: 'Please input your Password!' }]}
+          >
+            <Input
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              type="password"
+              placeholder="Password"
+              size="large"
+              disabled={isLoading}
+            />
+          </Form.Item>
+          <Form.Item>
+            <a className="login-form-forgot" href="">
+              Forgot password
+            </a>
+          </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item {...tailLayout}>
-          {!isLoading && (
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          )}
-          {isLoading && <LoadingIndicator small />}
-        </Form.Item>
-      </Form>
+          <Form.Item>
+            {!isLoading && (
+              <LoginFormButton
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+                size="large"
+              >
+                Log In
+              </LoginFormButton>
+            )}
+            {isLoading && <LoadingIndicator small />}
+          </Form.Item>
+        </Form>
+      )}
       {user?.userEmail ? (
         <List>
           <UserItem key={user.uid} name={user.userEmail} />
@@ -90,7 +110,7 @@ export function LogInSignUp() {
       ) : error ? (
         <ErrorText>{userErrorText(error)}</ErrorText>
       ) : null}
-    </Wrapper>
+    </>
   );
 }
 
@@ -107,20 +127,8 @@ export const userErrorText = (error: UserErrorType) => {
   }
 };
 
-const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
-};
-
-const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
-};
-
-const Wrapper = styled.div`
-  ${TextButton} {
-    margin: 16px 0;
-    font-size: 0.875rem;
-  }
+const LoginFormButton = styled(Button)`
+  width: 100%;
 `;
 
 const ErrorText = styled.span`

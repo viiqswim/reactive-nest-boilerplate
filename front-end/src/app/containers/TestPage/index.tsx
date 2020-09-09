@@ -9,7 +9,7 @@ import { logInSignUpSaga } from '../LogInSignup/saga';
 import { NavBar } from '../NavBar';
 import { Masthead } from './Masthead';
 import { PageWrapper } from 'app/components/PageWrapper';
-import { SignUp } from './SignUp';
+import { LogInSignUp } from '../LogInSignup';
 
 import { firebaseApp } from '../../../firebaseApp';
 
@@ -47,7 +47,7 @@ export function TestPage() {
       <NavBar />
       <PageWrapper>
         <Masthead />
-        <SignUp />
+        <LogInSignUp />
       </PageWrapper>
     </>
   );

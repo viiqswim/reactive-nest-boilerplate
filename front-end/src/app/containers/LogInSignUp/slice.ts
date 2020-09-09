@@ -67,7 +67,6 @@ const logInSignUpSlice = createSlice({
       state.loading = false;
       state.error = null;
       state.user = {};
-      state.isLoggedIn = false;
     },
   },
 });

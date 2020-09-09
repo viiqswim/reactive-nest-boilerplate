@@ -1,11 +1,13 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { Wrapper } from 'app/components/Wrapper';
+import { LogInSignUp } from '../LogInSignUp';
 
 export function SignUp() {
   return (
     <Wrapper>
-      <Demo />
+      {/* <Demo /> */}
+      <LogInSignUp />
     </Wrapper>
   );
 }

@@ -7,7 +7,7 @@ import { Input } from './components/Input';
 import { UserItem } from './UserItem';
 import { TextButton } from './components/TextButton';
 import { sliceKey, reducer, actions } from './slice';
-import { nestJsConnectorSaga } from './saga';
+import { logInSignUpSaga } from './saga';
 import {
   selectUserId,
   selectUser,
@@ -19,7 +19,7 @@ import { UserErrorType } from './types';
 
 export function LogInSignUp() {
   useInjectReducer({ key: sliceKey, reducer: reducer });
-  useInjectSaga({ key: sliceKey, saga: nestJsConnectorSaga });
+  useInjectSaga({ key: sliceKey, saga: logInSignUpSaga });
 
   const userId = useSelector(selectUserId);
   const user = useSelector(selectUser);

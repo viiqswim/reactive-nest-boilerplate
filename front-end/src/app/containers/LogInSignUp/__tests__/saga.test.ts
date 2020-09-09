@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import * as slice from '../slice';
 
-import { nestJsConnectorSaga, getUser } from '../saga';
+import { logInSignUpSaga, getUser } from '../saga';
 import { UserErrorType } from '../types';
 import { User } from 'types/User';
 
@@ -84,8 +84,8 @@ describe('getUser Saga', () => {
   });
 });
 
-describe('nestJsConnectorSaga Saga', () => {
-  const nestJsConnectorIterator = nestJsConnectorSaga();
+describe('logInSignUpSaga Saga', () => {
+  const nestJsConnectorIterator = logInSignUpSaga();
   it('should start task to watch for loadUser action', () => {
     const takeLatestDescriptor = nestJsConnectorIterator.next().value;
     expect(takeLatestDescriptor).toEqual(

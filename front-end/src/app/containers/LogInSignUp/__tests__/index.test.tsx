@@ -9,10 +9,10 @@ import { configureAppStore } from 'store/configureStore';
 import { actions, initialState } from '../slice';
 import { UserErrorType } from '../types';
 
-function* mocknestJsConnectorSaga() {}
+function* mocklogInSignUpSaga() {}
 
 jest.mock('../saga', () => ({
-  nestJsConnectorSaga: mocknestJsConnectorSaga,
+  logInSignUpSaga: mocklogInSignUpSaga,
 }));
 
 const renderLogInSignUp = (store: Store) =>

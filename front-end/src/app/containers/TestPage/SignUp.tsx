@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { Wrapper } from 'app/components/Wrapper';
-import { LogInSignUp } from '../LogInSignUp';
+import { LogInSignUp } from '../LoginSignup';
 
 export function SignUp() {
   return (

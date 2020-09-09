@@ -7,7 +7,7 @@ exports[`<TestPage /> should render and match the snapshot 1`] = `
     encodeSpecialCharacters={true}
   >
     <title>
-      Home Page
+      Test Page
     </title>
     <meta
       content="A React Boilerplate application homepage"
@@ -17,7 +17,6 @@ exports[`<TestPage /> should render and match the snapshot 1`] = `
   <NavBar />
   <ForwardRef(PageWrapper)>
     <Masthead />
-    <Features />
   </ForwardRef(PageWrapper)>
 </React.Fragment>
 `;

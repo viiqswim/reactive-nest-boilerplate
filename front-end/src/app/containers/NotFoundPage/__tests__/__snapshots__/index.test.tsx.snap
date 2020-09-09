@@ -34,6 +34,36 @@ Array [
   margin-right: -1rem;
 }
 
+.c8 {
+  color: rgba(215,113,88,1);
+  cursor: pointer;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.25rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8:hover {
+  opacity: 0.8;
+}
+
+.c8:active {
+  opacity: 0.4;
+}
+
+.c8 .icon {
+  margin-right: 0.25rem;
+}
+
 .c7 {
   color: rgba(215,113,88,1);
   cursor: pointer;
@@ -133,6 +163,26 @@ Array [
       >
         <a
           className="c7"
+          href="/"
+          onClick={[Function]}
+        >
+          <svg>
+            documentation-icon.svg
+          </svg>
+          Home Page
+        </a>
+        <a
+          className="c7"
+          href="/test"
+          onClick={[Function]}
+        >
+          <svg>
+            documentation-icon.svg
+          </svg>
+          Test Page
+        </a>
+        <a
+          className="c8"
           href="https://cansahin.gitbook.io/react-boilerplate-cra-template/"
           rel="noopener noreferrer"
           target="_blank"
@@ -144,7 +194,7 @@ Array [
           Documentation
         </a>
         <a
-          className="c7"
+          className="c8"
           href="https://github.com/react-boilerplate/react-boilerplate-cra-template"
           rel="noopener noreferrer"
           target="_blank"

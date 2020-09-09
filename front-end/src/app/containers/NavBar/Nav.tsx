@@ -28,15 +28,17 @@ export function Nav() {
         <DocumentationIcon />
         Home Page
       </ItemLink>
-      <ItemLink to="/login">
-        <DocumentationIcon />
-        Log in
-      </ItemLink>
       {isLoggedIn && (
         <Button type="ghost" onClick={logoutUser}>
           <DocumentationIcon />
           Log out
         </Button>
+      )}
+      {!isLoggedIn && (
+        <ItemLink to="/login">
+          <DocumentationIcon />
+          Log in
+        </ItemLink>
       )}
       {!isLoggedIn && (
         <Item

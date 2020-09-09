@@ -18,7 +18,9 @@ import { User } from 'types/User';
 
 // The initial state of the LogInSignUp container
 export const initialState: ContainerState = {
-  userEmail: 22,
+  isLoggedIn: false,
+  userEmail: '',
+  password: '',
   user: {},
   loading: false,
   error: null,
@@ -28,8 +30,14 @@ const logInSignUpSlice = createSlice({
   name: 'logInSignUp',
   initialState,
   reducers: {
+    changeIsLoggedIn(state, action: PayloadAction<any>) {
+      state.isLoggedIn = action.payload;
+    },
     changeUserEmail(state, action: PayloadAction<any>) {
       state.userEmail = action.payload;
+    },
+    changePassword(state, action: PayloadAction<any>) {
+      state.password = action.payload;
     },
     loadUser(state) {
       state.loading = true;
@@ -38,7 +46,11 @@ const logInSignUpSlice = createSlice({
     },
     userLoaded(state, action: PayloadAction<User>) {
       const user = action.payload;
-      state.user = user;
+      state.user = {
+        userEmail: user.userEmail,
+        id: 1,
+        uid: user.uid,
+      };
       state.loading = false;
     },
     userError(state, action: PayloadAction<UserErrorType>) {

@@ -8,7 +8,7 @@ interface Props {
 export function UserItem({ name }: Props) {
   return (
     <Wrapper>
-      <Name>{name}</Name>
+      <span>Logged in as: </span> <Name>{name}</Name>
     </Wrapper>
   );
 }
@@ -28,5 +28,5 @@ const Wrapper = styled.div`
 
 const Name = styled.div`
   flex: 1;
-  padding: 0.625rem 0;
+  padding: 0.625rem 5px;
 `;

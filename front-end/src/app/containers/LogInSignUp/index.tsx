@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components/macro';
+import { Form, Input, Button } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
-import { FormLabel } from 'app/components/FormLabel';
-import { Input } from './components/Input';
 import { UserItem } from './UserItem';
 import { TextButton } from './components/TextButton';
 import { sliceKey, reducer, actions } from './slice';
@@ -13,6 +12,7 @@ import {
   selectUser,
   selectLoading,
   selectError,
+  selectIsLoggedIn,
 } from './selectors';
 import { LoadingIndicator } from 'app/components/LoadingIndicator';
 import { UserErrorType } from './types';
@@ -22,15 +22,17 @@ export function LogInSignUp() {
   useInjectSaga({ key: sliceKey, saga: logInSignUpSaga });
 
   const userEmail = useSelector(selectUserEmail);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
   const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
   const dispatch = useDispatch();
 
-  const onChangeUserEmail = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    const userEmail = evt.currentTarget.value;
+  const onChangeUserEmail = values => {
+    const { userEmail, password } = values;
     dispatch(actions.changeUserEmail(userEmail));
+    dispatch(actions.changePassword(password));
     dispatch(actions.loadUser());
     if (userEmail === 'v.dozal@live.com') {
       dispatch(actions.loginUser());
@@ -47,30 +49,43 @@ export function LogInSignUp() {
     }
   });
 
-  const onSubmitForm = (evt?: React.FormEvent<HTMLFormElement>) => {
-    /* istanbul ignore next  */
-    if (evt !== undefined && evt.preventDefault) {
-      evt.preventDefault();
-    }
-  };
-
   return (
     <Wrapper>
-      <FormGroup onSubmit={onSubmitForm}>
-        <FormLabel>User ID</FormLabel>
-        <InputWrapper>
-          <Input
-            type="text"
-            placeholder="Type any user ID"
-            value={userEmail}
-            onChange={onChangeUserEmail}
-          />
+      {isLoggedIn && <h1> You're logged in</h1>}
+      <Form
+        {...layout}
+        name="basic"
+        initialValues={{ remember: true }}
+        onFinish={onChangeUserEmail}
+      >
+        <Form.Item
+          label="User Email"
+          name="userEmail"
+          rules={[{ required: true, message: 'Please input your email!' }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[{ required: true, message: 'Please input your password!' }]}
+        >
+          <Input.Password />
+        </Form.Item>
+
+        <Form.Item {...tailLayout}>
+          {!isLoading && (
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          )}
           {isLoading && <LoadingIndicator small />}
-        </InputWrapper>
-      </FormGroup>
-      {user?.firstName ? (
+        </Form.Item>
+      </Form>
+      {user?.userEmail ? (
         <List>
-          <UserItem key={user.id} name={user.firstName} />
+          <UserItem key={user.uid} name={user.userEmail} />
         </List>
       ) : error ? (
         <ErrorText>{userErrorText(error)}</ErrorText>
@@ -92,6 +107,15 @@ export const userErrorText = (error: UserErrorType) => {
   }
 };
 
+const layout = {
+  labelCol: { span: 8 },
+  wrapperCol: { span: 16 },
+};
+
+const tailLayout = {
+  wrapperCol: { offset: 8, span: 16 },
+};
+
 const Wrapper = styled.div`
   ${TextButton} {
     margin: 16px 0;
@@ -99,29 +123,8 @@ const Wrapper = styled.div`
   }
 `;
 
-const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-
-  ${Input} {
-    width: ${100 / 3}%;
-    margin-right: 0.5rem;
-  }
-`;
-
 const ErrorText = styled.span`
   color: ${p => p.theme.text};
-`;
-
-const FormGroup = styled.form`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-
-  ${FormLabel} {
-    margin-bottom: 0.25rem;
-    margin-left: 0.125rem;
-  }
 `;
 
 const List = styled.div``;

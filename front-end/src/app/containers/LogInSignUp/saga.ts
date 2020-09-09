@@ -1,11 +1,10 @@
 import { call, put, select, takeLatest, delay } from 'redux-saga/effects';
 import { request } from 'utils/request';
-import { selectUserEmail } from './selectors';
+import { selectUserEmail, selectPassword } from './selectors';
 import { actions } from './slice';
 import { User } from 'types/User';
 import { UserErrorType } from './types';
-
-const firebase = require('firebase/auth');
+import { firebaseApp } from '../../../firebaseApp';
 
 /**
  * Github user request/response handler
@@ -38,19 +37,19 @@ export function* getUser() {
 }
 
 export function* loginUser() {
-  debugger;
   yield delay(500);
   // Select userEmail from store
   const userEmail: string = yield select(selectUserEmail);
+  const password: string = yield select(selectPassword);
+
   if (userEmail.length === 0) {
     yield put(actions.userError(UserErrorType.USER_ID_EMPTY));
     return;
   }
 
   try {
-    const user: User = yield call(login, userEmail, 'password');
-    debugger;
-    if (user.id) {
+    const user: User = yield call(login, userEmail, password);
+    if (user.uid) {
       yield put(actions.userLoaded(user));
     } else {
       yield put(actions.userError(UserErrorType.USER_HAS_NO_USER));
@@ -65,16 +64,24 @@ export function* loginUser() {
 }
 
 export async function login(userEmail: string, password: string): Promise<any> {
-  firebase
+  const response = await firebaseApp
     .auth()
-    .signInWithEmailAndPassword(userEmail, password)
+    .signInWithEmailAndPassword(userEmail, password);
+
+  return response?.user;
+}
+
+export async function logout(): Promise<any> {
+  firebaseApp
+    .auth()
+    .signOut()
+    .then(function () {})
     .catch(function (error) {
-      // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      // ...
+      console.log(errorCode);
+      console.log(errorMessage);
     });
-
 }
 
 /**

@@ -11,6 +11,11 @@ export const selectUserEmail = createSelector(
   logInSignUpState => logInSignUpState.userEmail,
 );
 
+export const selectPassword = createSelector(
+  [selectDomain],
+  logInSignUpState => logInSignUpState.password,
+);
+
 export const selectLoading = createSelector(
   [selectDomain],
   logInSignUpState => logInSignUpState.loading,
@@ -24,4 +29,9 @@ export const selectError = createSelector(
 export const selectUser = createSelector(
   [selectDomain],
   logInSignUpState => logInSignUpState.user,
+);
+
+export const selectIsLoggedIn = createSelector(
+  [selectDomain],
+  logInSignUpState => logInSignUpState.isLoggedIn,
 );

@@ -5,12 +5,12 @@ import { StyleConstants } from 'styles/StyleConstants';
 import { Nav } from './Nav';
 import { PageWrapper } from '../../components/PageWrapper';
 
-export function NavBar() {
+export function NavBar({ isLoggedIn = false, user = {} }) {
   return (
     <Wrapper>
       <PageWrapper>
         <Logo />
-        <Nav />
+        <Nav isLoggedIn={isLoggedIn} user={user} />
       </PageWrapper>
     </Wrapper>
   );

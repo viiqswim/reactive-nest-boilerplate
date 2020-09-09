@@ -2,10 +2,13 @@ import { User } from 'types/User';
 
 /* --- STATE --- */
 export interface LogInSignUpState {
-  userEmail: any;
-  loading: boolean;
+  id?: string;
+  isLoggedIn?: boolean;
+  userEmail?: string;
+  password?: string;
+  loading?: boolean;
   error?: UserErrorType | null;
-  user: User;
+  user?: User;
 }
 
 export enum UserErrorType {

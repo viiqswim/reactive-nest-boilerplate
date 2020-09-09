@@ -31,10 +31,7 @@ export const selectError = createSelector(
   signup => signup.error,
 );
 
-export const selectUser = createSelector(
-  [selectDomain],
-  signup => signup.user,
-);
+export const selectUser = createSelector([selectDomain], signup => signup.user);
 
 export const selectIsLoggedIn = createSelector(
   [selectDomain],

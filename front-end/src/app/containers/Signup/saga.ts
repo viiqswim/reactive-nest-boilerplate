@@ -1,5 +1,9 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects';
-import { selectUserEmail, selectPassword, selectPasswordConfirm, selectIsLoggedIn } from './selectors';
+import {
+  selectUserEmail,
+  selectPassword,
+  selectPasswordConfirm,
+} from './selectors';
 import { actions } from './slice';
 import { User } from 'types/User';
 import { UserErrorType } from './types';

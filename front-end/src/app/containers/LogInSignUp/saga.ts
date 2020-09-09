@@ -1,4 +1,4 @@
-import { call, put, select, takeLatest, delay } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 import { selectUserEmail, selectPassword, selectIsLoggedIn } from './selectors';
 import { actions } from './slice';
 import { User } from 'types/User';

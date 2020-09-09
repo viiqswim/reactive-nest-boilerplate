@@ -1,13 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Masthead /> should render and match the snapshot 1`] = `
-<ForwardRef(Masthead__Wrapper)>
+<ForwardRef(Wrapper)>
   <Logos />
   <ForwardRef(Title)>
-    This is a test page
+    Sign up
   </ForwardRef(Title)>
-  <ForwardRef(Lead)>
-    The best test page ever
-  </ForwardRef(Lead)>
-</ForwardRef(Masthead__Wrapper)>
+</ForwardRef(Wrapper)>
 `;

@@ -4,8 +4,7 @@ import { RootState } from 'types';
 import { initialState } from './slice';
 
 // First select the relevant part from the state
-const selectDomain = (state: RootState) =>
-  state.logInSignUp || initialState;
+const selectDomain = (state: RootState) => state.logInSignUp || initialState;
 
 export const selectUserId = createSelector(
   [selectDomain],

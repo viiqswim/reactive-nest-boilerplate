@@ -1,6 +1,6 @@
 import { GithubRepoFormState } from 'app/containers/GithubRepoForm/types';
 import { NestJsConnectorState } from 'app/containers/NestJsConnector/types';
-import { LogInSignUpState } from 'app/containers/LogInSignUpState/types';
+import { LogInSignUpState } from 'app/containers/LogInSignUp/types';
 import { ThemeState } from 'styles/theme/types';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 

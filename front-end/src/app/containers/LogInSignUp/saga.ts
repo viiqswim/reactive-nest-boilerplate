@@ -6,7 +6,6 @@ import { UserErrorType } from './types';
 import { firebaseApp } from '../../../firebaseApp';
 
 export function* loginUser() {
-  yield delay(500);
   // Select userEmail from store
   const userEmail: string = yield select(selectUserEmail);
   const password: string = yield select(selectPassword);
@@ -33,7 +32,6 @@ export function* loginUser() {
 }
 
 export function* logoutUser() {
-  yield delay(500);
   const isLoggedIn: boolean = yield select(selectIsLoggedIn);
   if (!isLoggedIn) {
     return;

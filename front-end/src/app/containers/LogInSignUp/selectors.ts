@@ -5,24 +5,24 @@ import { initialState } from './slice';
 
 // First select the relevant part from the state
 const selectDomain = (state: RootState) =>
-  state.nestJsConnector || initialState;
+  state.logInSignUp || initialState;
 
 export const selectUserId = createSelector(
   [selectDomain],
-  nestJsConnectorState => nestJsConnectorState.userId,
+  logInSignUpState => logInSignUpState.userId,
 );
 
 export const selectLoading = createSelector(
   [selectDomain],
-  nestJsConnectorState => nestJsConnectorState.loading,
+  logInSignUpState => logInSignUpState.loading,
 );
 
 export const selectError = createSelector(
   [selectDomain],
-  nestJsConnectorState => nestJsConnectorState.error,
+  logInSignUpState => logInSignUpState.error,
 );
 
 export const selectUser = createSelector(
   [selectDomain],
-  nestJsConnectorState => nestJsConnectorState.user,
+  logInSignUpState => logInSignUpState.user,
 );

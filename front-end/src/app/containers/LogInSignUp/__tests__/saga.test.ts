@@ -85,9 +85,9 @@ describe('getUser Saga', () => {
 });
 
 describe('logInSignUpSaga Saga', () => {
-  const nestJsConnectorIterator = logInSignUpSaga();
+  const logInSignUpIterator = logInSignUpSaga();
   it('should start task to watch for loadUser action', () => {
-    const takeLatestDescriptor = nestJsConnectorIterator.next().value;
+    const takeLatestDescriptor = logInSignUpIterator.next().value;
     expect(takeLatestDescriptor).toEqual(
       takeLatest(slice.actions.loadUser.type, getUser),
     );

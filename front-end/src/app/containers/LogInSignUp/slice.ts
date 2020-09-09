@@ -24,8 +24,8 @@ export const initialState: ContainerState = {
   error: null,
 };
 
-const nestJsConnectorSlice = createSlice({
-  name: 'nestJsConnector',
+const logInSignUpSlice = createSlice({
+  name: 'logInSignUp',
   initialState,
   reducers: {
     changeUserId(state, action: PayloadAction<number>) {
@@ -48,4 +48,4 @@ const nestJsConnectorSlice = createSlice({
   },
 });
 
-export const { actions, reducer, name: sliceKey } = nestJsConnectorSlice;
+export const { actions, reducer, name: sliceKey } = logInSignUpSlice;

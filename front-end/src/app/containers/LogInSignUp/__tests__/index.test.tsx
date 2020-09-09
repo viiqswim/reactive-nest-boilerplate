@@ -34,7 +34,7 @@ describe('<LogInSignUp />', () => {
     store = configureAppStore();
     component = renderLogInSignUp(store);
     store.dispatch(actions.userLoaded({}));
-    expect(store.getState().nestJsConnector).toEqual(initialState);
+    expect(store.getState().logInSignUp).toEqual(initialState);
   });
   afterEach(() => {
     component.unmount();
@@ -44,7 +44,7 @@ describe('<LogInSignUp />', () => {
     component.unmount();
     component = renderLogInSignUp(store);
     expect(initialState.userId).toBeTruthy();
-    expect(store.getState().nestJsConnector.loading).toBe(true);
+    expect(store.getState().logInSignUp.loading).toBe(true);
   });
 
   it("shouldn't fetch user on mount if userId is empty", () => {
@@ -52,14 +52,14 @@ describe('<LogInSignUp />', () => {
     store.dispatch(actions.userLoaded({}));
     component.unmount();
     component = renderLogInSignUp(store);
-    expect(store.getState().nestJsConnector.loading).toBe(false);
+    expect(store.getState().logInSignUp.loading).toBe(false);
   });
 
   it('should dispatch action on userId change', () => {
     const input = component.container.querySelector('input');
     const userId = 1;
     fireEvent.change(input!, { target: { value: userId } });
-    expect(store.getState().nestJsConnector.loading).toBe(true);
+    expect(store.getState().logInSignUp.loading).toBe(true);
   });
 
   it('should change userId field value on action', () => {

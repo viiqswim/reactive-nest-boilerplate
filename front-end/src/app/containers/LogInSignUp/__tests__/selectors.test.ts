@@ -18,7 +18,7 @@ describe('LogInSignUp selectors', () => {
   it('should select userId', () => {
     const userId = 'test';
     state = {
-      nestJsConnector: { ...initialState, userId: userId },
+      logInSignUp: { ...initialState, userId: userId },
     };
     expect(selectors.selectUserId(state)).toEqual(userId);
   });
@@ -26,7 +26,7 @@ describe('LogInSignUp selectors', () => {
   it('should select userId', () => {
     const user = { id: 1, name: 'test' } as User;
     state = {
-      nestJsConnector: { ...initialState, user },
+      logInSignUp: { ...initialState, user },
     };
     expect(selectors.selectUser(state)).toEqual(user);
   });
@@ -34,7 +34,7 @@ describe('LogInSignUp selectors', () => {
   it('should select error', () => {
     const error = UserErrorType.USER_NOT_FOUND;
     state = {
-      nestJsConnector: { ...initialState, error: error },
+      logInSignUp: { ...initialState, error: error },
     };
     expect(selectors.selectError(state)).toEqual(error);
   });
@@ -42,7 +42,7 @@ describe('LogInSignUp selectors', () => {
   it('should select loading', () => {
     const loading = true;
     state = {
-      nestJsConnector: { ...initialState, loading: loading },
+      logInSignUp: { ...initialState, loading: loading },
     };
     expect(selectors.selectLoading(state)).toEqual(loading);
   });

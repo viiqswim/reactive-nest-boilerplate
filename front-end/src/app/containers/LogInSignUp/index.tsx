@@ -9,7 +9,7 @@ import { TextButton } from './components/TextButton';
 import { sliceKey, reducer, actions } from './slice';
 import { logInSignUpSaga } from './saga';
 import {
-  selectUserId,
+  selectUserEmail,
   selectUser,
   selectLoading,
   selectError,
@@ -21,16 +21,16 @@ export function LogInSignUp() {
   useInjectReducer({ key: sliceKey, reducer: reducer });
   useInjectSaga({ key: sliceKey, saga: logInSignUpSaga });
 
-  const userId = useSelector(selectUserId);
+  const userEmail = useSelector(selectUserEmail);
   const user = useSelector(selectUser);
   const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
   const dispatch = useDispatch();
 
-  const onChangeUserId = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    const userId = Number(evt.currentTarget.value);
-    dispatch(actions.changeUserId(userId));
+  const onChangeUserEmail = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const userEmail = Number(evt.currentTarget.value);
+    dispatch(actions.changeUserEmail(userEmail));
     dispatch(actions.loadUser());
   };
 
@@ -38,8 +38,8 @@ export function LogInSignUp() {
     useEffect(effect, []);
   };
   useEffectOnMount(() => {
-    // When initial state userId is not null, submit the form to load user
-    if (userId) {
+    // When initial state userEmail is not null, submit the form to load user
+    if (userEmail) {
       dispatch(actions.loadUser());
     }
   });
@@ -59,8 +59,8 @@ export function LogInSignUp() {
           <Input
             type="text"
             placeholder="Type any user ID"
-            value={userId}
-            onChange={onChangeUserId}
+            value={userEmail}
+            onChange={onChangeUserEmail}
           />
           {isLoading && <LoadingIndicator small />}
         </InputWrapper>

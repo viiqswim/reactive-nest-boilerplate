@@ -13,13 +13,13 @@ describe('LogInSignUp slice', () => {
     expect(slice.reducer(undefined, { type: '' })).toEqual(state);
   });
 
-  it('should handle changeUserId', () => {
-    const userId = 1;
-    expect(slice.reducer(state, slice.actions.changeUserId(userId))).toEqual<
+  it('should handle changeUserEmail', () => {
+    const userEmail = 1;
+    expect(slice.reducer(state, slice.actions.changeUserEmail(userEmail))).toEqual<
       ContainerState
     >({
       ...slice.initialState,
-      userId: userId,
+      userEmail: userEmail,
     });
   });
 

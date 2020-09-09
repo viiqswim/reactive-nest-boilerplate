@@ -6,9 +6,9 @@ import { initialState } from './slice';
 // First select the relevant part from the state
 const selectDomain = (state: RootState) => state.logInSignUp || initialState;
 
-export const selectUserId = createSelector(
+export const selectUserEmail = createSelector(
   [selectDomain],
-  logInSignUpState => logInSignUpState.userId,
+  logInSignUpState => logInSignUpState.userEmail,
 );
 
 export const selectLoading = createSelector(

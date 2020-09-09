@@ -1,6 +1,6 @@
 import { call, put, select, takeLatest, delay } from 'redux-saga/effects';
 import { request } from 'utils/request';
-import { selectUserId } from './selectors';
+import { selectUserEmail } from './selectors';
 import { actions } from './slice';
 import { User } from 'types/User';
 import { UserErrorType } from './types';
@@ -10,13 +10,13 @@ import { UserErrorType } from './types';
  */
 export function* getUser() {
   yield delay(500);
-  // Select userId from store
-  const userId: string = yield select(selectUserId);
-  if (userId.length === 0) {
+  // Select userEmail from store
+  const userEmail: string = yield select(selectUserEmail);
+  if (userEmail.length === 0) {
     yield put(actions.userError(UserErrorType.USER_ID_EMPTY));
     return;
   }
-  const requestURL = `${process.env.REACT_APP_BACK_END_URL}/users/${userId}`;
+  const requestURL = `${process.env.REACT_APP_BACK_END_URL}/users/${userEmail}`;
 
   try {
     // Call our request helper (see 'utils/request')

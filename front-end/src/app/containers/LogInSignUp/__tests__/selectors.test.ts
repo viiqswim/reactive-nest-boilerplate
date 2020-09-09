@@ -12,18 +12,18 @@ describe('LogInSignUp selectors', () => {
   });
 
   it('should select the initial state', () => {
-    expect(selectors.selectUserId(state)).toEqual(initialState.userId);
+    expect(selectors.selectUserEmail(state)).toEqual(initialState.userEmail);
   });
 
-  it('should select userId', () => {
-    const userId = 'test';
+  it('should select userEmail', () => {
+    const userEmail = 'test';
     state = {
-      logInSignUp: { ...initialState, userId: userId },
+      logInSignUp: { ...initialState, userEmail: userEmail },
     };
-    expect(selectors.selectUserId(state)).toEqual(userId);
+    expect(selectors.selectUserEmail(state)).toEqual(userEmail);
   });
 
-  it('should select userId', () => {
+  it('should select userEmail', () => {
     const user = { id: 1, name: 'test' } as User;
     state = {
       logInSignUp: { ...initialState, user },

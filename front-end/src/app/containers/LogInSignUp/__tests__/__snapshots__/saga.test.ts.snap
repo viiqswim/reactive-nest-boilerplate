@@ -168,7 +168,7 @@ Object {
 }
 `;
 
-exports[`getUser Saga should return error if userId is empty 1`] = `
+exports[`getUser Saga should return error if userEmail is empty 1`] = `
 Object {
   "@@redux-saga/IO": true,
   "combinator": false,
@@ -183,7 +183,7 @@ Object {
 }
 `;
 
-exports[`getUser Saga should return error if userId is empty 2`] = `
+exports[`getUser Saga should return error if userEmail is empty 2`] = `
 Object {
   "@@redux-saga/IO": true,
   "combinator": false,

@@ -6,7 +6,7 @@ import { UserErrorType } from '../types';
 import { User } from 'types/User';
 
 describe('getUser Saga', () => {
-  let userId: any;
+  let userEmail: any;
   let user: User;
   let getUserIterator: any;
 
@@ -21,9 +21,9 @@ describe('getUser Saga', () => {
     expect(selectDescriptor).toMatchSnapshot();
   });
 
-  it('should return error if userId is empty', () => {
-    userId = '';
-    const putDescriptor = getUserIterator.next(userId).value;
+  it('should return error if userEmail is empty', () => {
+    userEmail = '';
+    const putDescriptor = getUserIterator.next(userEmail).value;
     expect(putDescriptor).toEqual(
       put(slice.actions.userError(UserErrorType.USER_ID_EMPTY)),
     );
@@ -33,13 +33,13 @@ describe('getUser Saga', () => {
   });
 
   it('should dispatch the userLoaded action if it requests the data successfully', () => {
-    userId = 'test';
+    userEmail = 'test';
     user = {
       id: 1,
       firstName: 'user1',
     };
 
-    const requestDescriptor = getUserIterator.next(userId).value;
+    const requestDescriptor = getUserIterator.next(userEmail).value;
     expect(requestDescriptor).toMatchSnapshot();
 
     const putDescriptor = getUserIterator.next(user).value;
@@ -47,9 +47,9 @@ describe('getUser Saga', () => {
   });
 
   it('should dispatch the user not found error', () => {
-    userId = 'test';
+    userEmail = 'test';
 
-    const requestDescriptor = getUserIterator.next(userId).value;
+    const requestDescriptor = getUserIterator.next(userEmail).value;
     expect(requestDescriptor).toMatchSnapshot();
 
     const putDescriptor = getUserIterator.throw({ response: { status: 404 } })
@@ -59,10 +59,10 @@ describe('getUser Saga', () => {
     );
   });
   it('should dispatch the user has no user error', () => {
-    userId = 'test';
+    userEmail = 'test';
     user = {};
 
-    const requestDescriptor = getUserIterator.next(userId).value;
+    const requestDescriptor = getUserIterator.next(userEmail).value;
     expect(requestDescriptor).toMatchSnapshot();
 
     const putDescriptor = getUserIterator.next(user).value;
@@ -72,9 +72,9 @@ describe('getUser Saga', () => {
   });
 
   it('should dispatch the response error', () => {
-    userId = 'test';
+    userEmail = 'test';
 
-    const requestDescriptor = getUserIterator.next(userId).value;
+    const requestDescriptor = getUserIterator.next(userEmail).value;
     expect(requestDescriptor).toMatchSnapshot();
 
     const putDescriptor = getUserIterator.throw(new Error('some error')).value;

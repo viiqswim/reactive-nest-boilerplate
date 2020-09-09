@@ -40,12 +40,8 @@ export function* logoutUser() {
   }
 
   try {
-    const user = yield call(logout);
-    if (user.uid) {
-      yield put(actions.changeIsLoggedIn(false));
-    } else {
-      yield put(actions.userError(UserErrorType.RESPONSE_ERROR));
-    }
+    yield call(logout);
+    yield put(actions.changeIsLoggedIn(false));
   } catch (err) {
     if (err.response?.status === 404) {
       yield put(actions.userError(UserErrorType.USER_NOT_FOUND));

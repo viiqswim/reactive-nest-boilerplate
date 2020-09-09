@@ -1,19 +1,13 @@
-import { Body, Controller, Delete, Get, Param, Post, Headers, HttpException, HttpStatus } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Headers, UseGuards } from '@nestjs/common';
 import { CreateUserDto } from '../dto/create-user.dto';
 import {
   User,
 } from '../entity';
 import { UsersService } from './users.service';
-import * as firebaseAdmin from 'firebase-admin';
-
-import * as serviceAccountJson from '../../firebase-service-account.json';
-
-const serviceAccount = serviceAccountJson as firebaseAdmin.ServiceAccount;
-const firebaseApp = firebaseAdmin.initializeApp({
-  credential: firebaseAdmin.credential.cert(serviceAccount),
-});
+import { AuthGuard } from '../guards/auth.guard';
 
 @Controller('users')
+@UseGuards(AuthGuard)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -29,14 +23,6 @@ export class UsersController {
 
   @Get(':id')
   async findOne(@Param('id') id: string, @Headers('AuthToken') authToken): Promise<User> {
-    if (!authToken || authToken === 'undefined') {
-      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-    }
-    const verified = await firebaseApp.auth().verifyIdToken(authToken);
-    if (!verified.uid) {
-      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
-    }
-
     return await this.usersService.findOne(id);
   }
 

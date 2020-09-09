@@ -51,6 +51,7 @@ const logInSignUpSlice = createSlice({
         id: 1,
         uid: user.uid,
       };
+      state.isLoggedIn = true;
       state.loading = false;
     },
     userError(state, action: PayloadAction<UserErrorType>) {
@@ -61,6 +62,12 @@ const logInSignUpSlice = createSlice({
       state.loading = true;
       state.error = null;
       state.user = {};
+    },
+    logoutUser(state) {
+      state.loading = false;
+      state.error = null;
+      state.user = {};
+      state.isLoggedIn = false;
     },
   },
 });

@@ -10,7 +10,7 @@ export function NavBar({ isLoggedIn = false, user = {} }) {
     <Wrapper>
       <PageWrapper>
         <Logo />
-        <Nav isLoggedIn={isLoggedIn} user={user} />
+        <Nav />
       </PageWrapper>
     </Wrapper>
   );

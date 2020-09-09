@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
+import { User } from 'types/User';
 import { sliceKey, reducer, actions } from '../LogInSignup/slice';
 import { logInSignUpSaga } from '../LogInSignup/saga';
-import { selectIsLoggedIn, selectUser } from '../LogInSignup/selectors';
 import { NavBar } from '../NavBar';
 import { Masthead } from './Masthead';
 import { PageWrapper } from 'app/components/PageWrapper';
 import { SignUp } from './SignUp';
 
-import { User } from 'types/User';
 import { firebaseApp } from '../../../firebaseApp';
 
 export function TestPage() {
@@ -36,9 +35,6 @@ export function TestPage() {
     });
   });
 
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-  const user = useSelector(selectUser);
-
   return (
     <>
       <Helmet>
@@ -48,7 +44,7 @@ export function TestPage() {
           content="A React Boilerplate application homepage"
         />
       </Helmet>
-      <NavBar isLoggedIn={isLoggedIn} user={user} />
+      <NavBar />
       <PageWrapper>
         <Masthead />
         <SignUp />

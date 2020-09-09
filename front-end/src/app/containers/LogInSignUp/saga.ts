@@ -1,6 +1,6 @@
 import { call, put, select, takeLatest, delay } from 'redux-saga/effects';
 import { request } from 'utils/request';
-import { selectUserEmail, selectPassword } from './selectors';
+import { selectUserEmail, selectPassword, selectIsLoggedIn } from './selectors';
 import { actions } from './slice';
 import { User } from 'types/User';
 import { UserErrorType } from './types';
@@ -63,6 +63,29 @@ export function* loginUser() {
   }
 }
 
+export function* logoutUser() {
+  yield delay(500);
+  const isLoggedIn: boolean = yield select(selectIsLoggedIn);
+  if (!isLoggedIn) {
+    return;
+  }
+
+  try {
+    const user = yield call(logout);
+    if (user.uid) {
+      yield put(actions.changeIsLoggedIn(false));
+    } else {
+      yield put(actions.userError(UserErrorType.RESPONSE_ERROR));
+    }
+  } catch (err) {
+    if (err.response?.status === 404) {
+      yield put(actions.userError(UserErrorType.USER_NOT_FOUND));
+    } else {
+      yield put(actions.userError(UserErrorType.RESPONSE_ERROR));
+    }
+  }
+}
+
 export async function login(userEmail: string, password: string): Promise<any> {
   const response = await firebaseApp
     .auth()
@@ -72,16 +95,17 @@ export async function login(userEmail: string, password: string): Promise<any> {
 }
 
 export async function logout(): Promise<any> {
-  firebaseApp
+  const response = await firebaseApp
     .auth()
     .signOut()
-    .then(function () {})
     .catch(function (error) {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log(errorCode);
       console.log(errorMessage);
     });
+
+  return response;
 }
 
 /**
@@ -94,4 +118,5 @@ export function* logInSignUpSaga() {
   // It will be cancelled automatically on component unmount
   yield takeLatest(actions.loadUser.type, getUser);
   yield takeLatest(actions.loginUser.type, loginUser);
+  yield takeLatest(actions.logoutUser.type, logoutUser);
 }

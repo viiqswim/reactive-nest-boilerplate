@@ -5,7 +5,23 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as DocumentationIcon } from './assets/documentation-icon.svg';
 import { ReactComponent as GithubIcon } from './assets/github-icon.svg';
 
-export function Nav({ isLoggedIn, user }) {
+import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { sliceKey, reducer, actions } from '../LogInSignup/slice';
+import { logInSignUpSaga } from '../LogInSignup/saga';
+import { selectIsLoggedIn } from '../LogInSignup/selectors';
+import { Button } from 'antd';
+
+export function Nav() {
+  useInjectReducer({ key: sliceKey, reducer });
+  useInjectSaga({ key: sliceKey, saga: logInSignUpSaga });
+  const dispatch = useDispatch();
+
+  // const user = useSelector(selectUser);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const logoutUser = () => dispatch(actions.logoutUser());
+
   return (
     <Wrapper>
       <ItemLink to="/">
@@ -16,6 +32,12 @@ export function Nav({ isLoggedIn, user }) {
         <DocumentationIcon />
         Test Page
       </ItemLink>
+      {isLoggedIn && (
+        <Button type="ghost" onClick={logoutUser}>
+          <DocumentationIcon />
+          Log out
+        </Button>
+      )}
       {!isLoggedIn && (
         <Item
           href="https://cansahin.gitbook.io/react-boilerplate-cra-template/"

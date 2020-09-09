@@ -1,6 +1,7 @@
 import { GithubRepoFormState } from 'app/containers/GithubRepoForm/types';
 import { NestJsConnectorState } from 'app/containers/NestJsConnector/types';
 import { LoginState } from 'app/containers/Login/types';
+import { SignupState } from 'app/containers/Signup/types';
 import { ThemeState } from 'styles/theme/types';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 
@@ -15,5 +16,6 @@ export interface RootState {
   githubRepoForm?: GithubRepoFormState;
   nestJsConnector?: NestJsConnectorState;
   login?: LoginState;
+  signup?: SignupState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }

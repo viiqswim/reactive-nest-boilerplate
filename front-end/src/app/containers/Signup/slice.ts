@@ -1,5 +1,5 @@
 /*
- * LogInSignUp Slice
+ * Signup Slice
  *
  * Here we define:
  * - The shape of our container's slice of Redux store,
@@ -16,18 +16,19 @@ import { createSlice } from 'utils/@reduxjs/toolkit';
 import { ContainerState, UserErrorType } from './types';
 import { User } from 'types/User';
 
-// The initial state of the LogInSignUp container
+// The initial state of the Signup container
 export const initialState: ContainerState = {
   isLoggedIn: false,
   userEmail: '',
   password: '',
+  passwordConfirm: '',
   user: {},
   loading: false,
   error: null,
 };
 
-const loginSlice = createSlice({
-  name: 'login',
+const signupSlice = createSlice({
+  name: 'signup',
   initialState,
   reducers: {
     changeIsLoggedIn(state, action: PayloadAction<any>) {
@@ -38,6 +39,9 @@ const loginSlice = createSlice({
     },
     changePassword(state, action: PayloadAction<any>) {
       state.password = action.payload;
+    },
+    changePasswordConfirm(state, action: PayloadAction<any>) {
+      state.passwordConfirm = action.payload;
     },
     loadUser(state) {
       state.loading = true;
@@ -58,7 +62,7 @@ const loginSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
-    loginUser(state) {
+    signupUser(state) {
       state.loading = true;
       state.error = null;
       state.user = {};
@@ -71,4 +75,4 @@ const loginSlice = createSlice({
   },
 });
 
-export const { actions, reducer, name: sliceKey } = loginSlice;
+export const { actions, reducer, name: sliceKey } = signupSlice;

@@ -34,10 +34,7 @@ export function Login() {
     const { userEmail, password } = values;
     dispatch(actions.changeUserEmail(userEmail));
     dispatch(actions.changePassword(password));
-    dispatch(actions.loadUser());
-    if (userEmail === 'v.dozal@live.com') {
-      dispatch(actions.loginUser());
-    }
+    dispatch(actions.loginUser());
   };
 
   const useEffectOnMount = (effect: React.EffectCallback) => {

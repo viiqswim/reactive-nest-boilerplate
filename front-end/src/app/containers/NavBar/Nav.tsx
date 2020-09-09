@@ -28,9 +28,9 @@ export function Nav() {
         <DocumentationIcon />
         Home Page
       </ItemLink>
-      <ItemLink to="/test">
+      <ItemLink to="/signup">
         <DocumentationIcon />
-        Test Page
+        Log in
       </ItemLink>
       {isLoggedIn && (
         <Button type="ghost" onClick={logoutUser}>

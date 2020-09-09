@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
 import { UserItem } from './UserItem';
 import { sliceKey, reducer, actions } from './slice';
-import { loginSaga } from './saga';
+import { signupSaga } from './saga';
 import {
   selectUserEmail,
   selectUser,
@@ -18,9 +18,9 @@ import {
 import { LoadingIndicator } from 'app/components/LoadingIndicator';
 import { UserErrorType } from './types';
 
-export function LogInSignUp() {
+export function Signup() {
   useInjectReducer({ key: sliceKey, reducer: reducer });
-  useInjectSaga({ key: sliceKey, saga: loginSaga });
+  useInjectSaga({ key: sliceKey, saga: signupSaga });
 
   const userEmail = useSelector(selectUserEmail);
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -31,13 +31,11 @@ export function LogInSignUp() {
   const dispatch = useDispatch();
 
   const onChangeUserEmail = values => {
-    const { userEmail, password } = values;
+    const { userEmail, password, passwordConfirm } = values;
     dispatch(actions.changeUserEmail(userEmail));
     dispatch(actions.changePassword(password));
-    dispatch(actions.loadUser());
-    if (userEmail === 'v.dozal@live.com') {
-      dispatch(actions.loginUser());
-    }
+    dispatch(actions.changePasswordConfirm(passwordConfirm));
+    dispatch(actions.signupUser());
   };
 
   const useEffectOnMount = (effect: React.EffectCallback) => {
@@ -83,8 +81,25 @@ export function LogInSignUp() {
               disabled={isLoading}
             />
           </Form.Item>
+          <Form.Item
+            name="passwordConfirm"
+            rules={[
+              {
+                required: true,
+                message: 'Please input your Password Confirmation!',
+              },
+            ]}
+          >
+            <Input
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              type="password"
+              placeholder="Password Confirm"
+              size="large"
+              disabled={isLoading}
+            />
+          </Form.Item>
           <Form.Item>
-            <Link to="/signup">Don't have an account? Register here!</Link>
+            <Link to="/login">Have an account? Log in!</Link>
           </Form.Item>
 
           <Form.Item>
@@ -95,7 +110,7 @@ export function LogInSignUp() {
                 className="login-form-button"
                 size="large"
               >
-                Log In
+                Sign up
               </LoginFormButton>
             )}
             {isLoading && <LoadingIndicator small />}
@@ -117,8 +132,8 @@ export const userErrorText = (error: UserErrorType) => {
   switch (error) {
     case UserErrorType.USER_NOT_FOUND:
       return 'There is no such user 😞';
-    case UserErrorType.USER_ID_EMPTY:
-      return 'Type any user ID';
+    case UserErrorType.PASSWORDS_DO_NOT_MATCH:
+      return 'Passwords do not match. Please try again.';
     case UserErrorType.USER_HAS_NO_USER:
       return 'User does not exist';
     default:

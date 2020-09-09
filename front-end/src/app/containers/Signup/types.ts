@@ -1,11 +1,12 @@
 import { User } from 'types/User';
 
 /* --- STATE --- */
-export interface LogInSignUpState {
+export interface SignupState {
   id?: string;
   isLoggedIn?: boolean;
   userEmail?: string;
   password?: string;
+  passwordConfirm?: string;
   loading?: boolean;
   error?: UserErrorType | null;
   user?: User;
@@ -14,7 +15,7 @@ export interface LogInSignUpState {
 export enum UserErrorType {
   RESPONSE_ERROR = 1,
   USER_NOT_FOUND = 2,
-  USER_ID_EMPTY = 3,
+  PASSWORDS_DO_NOT_MATCH = 3,
   USER_HAS_NO_USER = 4,
 }
 
@@ -22,4 +23,4 @@ export enum UserErrorType {
   If you want to use 'ContainerState' keyword everywhere in your feature folder,
   instead of the 'HomePageState' keyword.
 */
-export type ContainerState = LogInSignUpState;
+export type ContainerState = SignupState;

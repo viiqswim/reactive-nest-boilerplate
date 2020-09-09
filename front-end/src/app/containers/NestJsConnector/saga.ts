@@ -4,6 +4,7 @@ import { selectUserId } from './selectors';
 import { actions } from './slice';
 import { User } from 'types/User';
 import { UserErrorType } from './types';
+import { firebaseApp } from 'firebaseApp';
 
 /**
  * Github user request/response handler
@@ -20,7 +21,12 @@ export function* getUser() {
 
   try {
     // Call our request helper (see 'utils/request')
-    const user: User = yield call(request, requestURL);
+    const userTokenId = yield call(getFirebaseToken) || null;
+    const user: User = yield call(request, requestURL, {
+      headers: {
+        AuthToken: userTokenId,
+      },
+    });
     if (user.id) {
       yield put(actions.userLoaded(user));
     } else {
@@ -33,6 +39,10 @@ export function* getUser() {
       yield put(actions.userError(UserErrorType.RESPONSE_ERROR));
     }
   }
+}
+
+async function getFirebaseToken() {
+  return await firebaseApp.auth().currentUser?.getIdToken(true);
 }
 
 /**

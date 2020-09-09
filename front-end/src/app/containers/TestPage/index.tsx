@@ -50,7 +50,7 @@ export function TestPage(props) {
       </Helmet>
       <NavBar />
       <PageWrapper>
-        <Masthead />
+        <Masthead isSignupPage={isSignupPage} isLoginPage={isLoginPage} />
         {isLoginPage && <Login />}
         {isSignupPage && <Signup />}
       </PageWrapper>

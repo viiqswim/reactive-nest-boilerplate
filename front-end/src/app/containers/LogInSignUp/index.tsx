@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components/macro';
 import { Form, Input, Button } from 'antd';
+import { Link } from 'react-router-dom';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
@@ -83,9 +84,7 @@ export function LogInSignUp() {
             />
           </Form.Item>
           <Form.Item>
-            <a className="login-form-forgot" href="">
-              Forgot password
-            </a>
+            <Link to="/signup">Don't have an account? Register here!</Link>
           </Form.Item>
 
           <Form.Item>

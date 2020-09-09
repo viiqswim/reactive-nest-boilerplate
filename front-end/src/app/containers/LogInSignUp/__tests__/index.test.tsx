@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styles/theme/ThemeProvider';
 import { HelmetProvider } from 'react-helmet-async';
-import { NestJsConnector, userErrorText } from '..';
+import { LogInSignUp, userErrorText } from '..';
 import { configureAppStore } from 'store/configureStore';
 import { actions, initialState } from '../slice';
 import { UserErrorType } from '../types';
@@ -15,24 +15,24 @@ jest.mock('../saga', () => ({
   nestJsConnectorSaga: mocknestJsConnectorSaga,
 }));
 
-const renderNestJsConnector = (store: Store) =>
+const renderLogInSignUp = (store: Store) =>
   render(
     <Provider store={store}>
       <ThemeProvider>
         <HelmetProvider>
-          <NestJsConnector />
+          <LogInSignUp />
         </HelmetProvider>
       </ThemeProvider>
     </Provider>,
   );
 
-describe('<NestJsConnector />', () => {
+describe('<LogInSignUp />', () => {
   let store: ReturnType<typeof configureAppStore>;
-  let component: ReturnType<typeof renderNestJsConnector>;
+  let component: ReturnType<typeof renderLogInSignUp>;
 
   beforeEach(() => {
     store = configureAppStore();
-    component = renderNestJsConnector(store);
+    component = renderLogInSignUp(store);
     store.dispatch(actions.userLoaded({}));
     expect(store.getState().nestJsConnector).toEqual(initialState);
   });
@@ -42,7 +42,7 @@ describe('<NestJsConnector />', () => {
 
   it("should fetch user on mount if userId isn't empty", () => {
     component.unmount();
-    component = renderNestJsConnector(store);
+    component = renderLogInSignUp(store);
     expect(initialState.userId).toBeTruthy();
     expect(store.getState().nestJsConnector.loading).toBe(true);
   });
@@ -51,7 +51,7 @@ describe('<NestJsConnector />', () => {
     store.dispatch(actions.changeUserId(0));
     store.dispatch(actions.userLoaded({}));
     component.unmount();
-    component = renderNestJsConnector(store);
+    component = renderLogInSignUp(store);
     expect(store.getState().nestJsConnector.loading).toBe(false);
   });
 
@@ -64,7 +64,7 @@ describe('<NestJsConnector />', () => {
 
   it('should change userId field value on action', () => {
     const userId = 1;
-    const form = renderNestJsConnector(store);
+    const form = renderLogInSignUp(store);
 
     const input = form.container.querySelector('input');
     fireEvent.change(input!, { target: { value: userId } });

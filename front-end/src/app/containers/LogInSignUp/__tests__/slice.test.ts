@@ -2,7 +2,7 @@ import * as slice from '../slice';
 import { ContainerState, UserErrorType } from '../types';
 import { User } from 'types/User';
 
-describe('NestJsConnector slice', () => {
+describe('LogInSignUp slice', () => {
   let state: ContainerState;
 
   beforeEach(() => {

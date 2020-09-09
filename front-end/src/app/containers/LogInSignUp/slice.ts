@@ -1,5 +1,5 @@
 /*
- * NestJsConnector Slice
+ * LogInSignUp Slice
  *
  * Here we define:
  * - The shape of our container's slice of Redux store,
@@ -16,7 +16,7 @@ import { createSlice } from 'utils/@reduxjs/toolkit';
 import { ContainerState, UserErrorType } from './types';
 import { User } from 'types/User';
 
-// The initial state of the NestJsConnector container
+// The initial state of the LogInSignUp container
 export const initialState: ContainerState = {
   userId: 22,
   user: {},

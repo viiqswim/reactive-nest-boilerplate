@@ -4,7 +4,7 @@ import { UserErrorType } from '../types';
 import { initialState } from '../slice';
 import { User } from 'types/User';
 
-describe('NestJsConnector selectors', () => {
+describe('LogInSignUp selectors', () => {
   let state: RootState = {};
 
   beforeEach(() => {

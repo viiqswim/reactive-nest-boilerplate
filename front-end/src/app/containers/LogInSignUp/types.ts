@@ -1,7 +1,7 @@
 import { User } from 'types/User';
 
 /* --- STATE --- */
-export interface NestJsConnectorState {
+export interface LogInSignUpState {
   userId: number;
   loading: boolean;
   error?: UserErrorType | null;
@@ -19,4 +19,4 @@ export enum UserErrorType {
   If you want to use 'ContainerState' keyword everywhere in your feature folder,
   instead of the 'HomePageState' keyword.
 */
-export type ContainerState = NestJsConnectorState;
+export type ContainerState = LogInSignUpState;

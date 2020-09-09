@@ -17,7 +17,7 @@ import {
 import { LoadingIndicator } from 'app/components/LoadingIndicator';
 import { UserErrorType } from './types';
 
-export function NestJsConnector() {
+export function LogInSignUp() {
   useInjectReducer({ key: sliceKey, reducer: reducer });
   useInjectSaga({ key: sliceKey, saga: nestJsConnectorSaga });
 

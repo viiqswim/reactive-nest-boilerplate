@@ -8,14 +8,14 @@ import { ReactComponent as GithubIcon } from './assets/github-icon.svg';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { sliceKey, reducer, actions } from '../LogInSignup/slice';
-import { logInSignUpSaga } from '../LogInSignup/saga';
-import { selectIsLoggedIn } from '../LogInSignup/selectors';
+import { sliceKey, reducer, actions } from '../Login/slice';
+import { loginSaga } from '../Login/saga';
+import { selectIsLoggedIn } from '../Login/selectors';
 import { Button } from 'antd';
 
 export function Nav() {
   useInjectReducer({ key: sliceKey, reducer });
-  useInjectSaga({ key: sliceKey, saga: logInSignUpSaga });
+  useInjectSaga({ key: sliceKey, saga: loginSaga });
   const dispatch = useDispatch();
 
   // const user = useSelector(selectUser);

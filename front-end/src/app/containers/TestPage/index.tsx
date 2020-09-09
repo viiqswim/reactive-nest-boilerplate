@@ -4,18 +4,19 @@ import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
 import { useDispatch } from 'react-redux';
 
 import { User } from 'types/User';
-import { sliceKey, reducer, actions } from '../LogInSignup/slice';
-import { logInSignUpSaga } from '../LogInSignup/saga';
+import { sliceKey, reducer, actions } from '../Login/slice';
+import { loginSaga } from '../Login/saga';
 import { NavBar } from '../NavBar';
 import { Masthead } from './Masthead';
 import { PageWrapper } from 'app/components/PageWrapper';
-import { LogInSignUp } from '../LogInSignup';
+import { Login } from '../Login';
 
 import { firebaseApp } from '../../../firebaseApp';
+// import { LogInSignUp } from '../Signup';
 
 export function TestPage() {
   useInjectReducer({ key: sliceKey, reducer });
-  useInjectSaga({ key: sliceKey, saga: logInSignUpSaga });
+  useInjectSaga({ key: sliceKey, saga: loginSaga });
   const dispatch = useDispatch();
 
   const useEffectOnMount = (effect: React.EffectCallback) => {
@@ -47,7 +48,7 @@ export function TestPage() {
       <NavBar />
       <PageWrapper>
         <Masthead />
-        <LogInSignUp />
+        <Login />
       </PageWrapper>
     </>
   );

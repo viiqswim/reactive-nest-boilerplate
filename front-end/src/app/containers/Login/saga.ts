@@ -77,7 +77,7 @@ export async function logout(): Promise<any> {
 /**
  * Root saga manages watcher lifecycle
  */
-export function* logInSignUpSaga() {
+export function* loginSaga() {
   // Watches for loadUser actions and calls getUser when one comes in.
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution

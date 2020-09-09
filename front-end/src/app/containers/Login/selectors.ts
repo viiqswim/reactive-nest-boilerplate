@@ -4,34 +4,34 @@ import { RootState } from 'types';
 import { initialState } from './slice';
 
 // First select the relevant part from the state
-const selectDomain = (state: RootState) => state.logInSignUp || initialState;
+const selectDomain = (state: RootState) => state.login || initialState;
 
 export const selectUserEmail = createSelector(
   [selectDomain],
-  logInSignUpState => logInSignUpState.userEmail,
+  loginState => loginState.userEmail,
 );
 
 export const selectPassword = createSelector(
   [selectDomain],
-  logInSignUpState => logInSignUpState.password,
+  loginState => loginState.password,
 );
 
 export const selectLoading = createSelector(
   [selectDomain],
-  logInSignUpState => logInSignUpState.loading,
+  loginState => loginState.loading,
 );
 
 export const selectError = createSelector(
   [selectDomain],
-  logInSignUpState => logInSignUpState.error,
+  loginState => loginState.error,
 );
 
 export const selectUser = createSelector(
   [selectDomain],
-  logInSignUpState => logInSignUpState.user,
+  loginState => loginState.user,
 );
 
 export const selectIsLoggedIn = createSelector(
   [selectDomain],
-  logInSignUpState => logInSignUpState.isLoggedIn,
+  loginState => loginState.isLoggedIn,
 );

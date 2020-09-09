@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
 import { UserItem } from './UserItem';
 import { sliceKey, reducer, actions } from './slice';
-import { logInSignUpSaga } from './saga';
+import { loginSaga } from './saga';
 import {
   selectUserEmail,
   selectUser,
@@ -20,7 +20,7 @@ import { UserErrorType } from './types';
 
 export function LogInSignUp() {
   useInjectReducer({ key: sliceKey, reducer: reducer });
-  useInjectSaga({ key: sliceKey, saga: logInSignUpSaga });
+  useInjectSaga({ key: sliceKey, saga: loginSaga });
 
   const userEmail = useSelector(selectUserEmail);
   const isLoggedIn = useSelector(selectIsLoggedIn);

@@ -26,8 +26,8 @@ export const initialState: ContainerState = {
   error: null,
 };
 
-const logInSignUpSlice = createSlice({
-  name: 'logInSignUp',
+const loginSlice = createSlice({
+  name: 'login',
   initialState,
   reducers: {
     changeIsLoggedIn(state, action: PayloadAction<any>) {
@@ -71,4 +71,4 @@ const logInSignUpSlice = createSlice({
   },
 });
 
-export const { actions, reducer, name: sliceKey } = logInSignUpSlice;
+export const { actions, reducer, name: sliceKey } = loginSlice;

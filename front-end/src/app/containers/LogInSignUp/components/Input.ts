@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 export const Input = styled.input`
   border: 2px solid ${p => p.theme.border};

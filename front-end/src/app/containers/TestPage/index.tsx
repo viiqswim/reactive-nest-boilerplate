@@ -10,11 +10,11 @@ import { NavBar } from '../NavBar';
 import { Masthead } from './Masthead';
 import { PageWrapper } from 'app/components/PageWrapper';
 import { Login } from '../Login';
+import { Signup } from '../Signup';
 
 import { firebaseApp } from '../../../firebaseApp';
-// import { LogInSignUp } from '../Signup';
 
-export function TestPage() {
+export function TestPage(props) {
   useInjectReducer({ key: sliceKey, reducer });
   useInjectSaga({ key: sliceKey, saga: loginSaga });
   const dispatch = useDispatch();
@@ -36,6 +36,9 @@ export function TestPage() {
     });
   });
 
+  const isSignupPage = props.location.pathname.includes('signup');
+  const isLoginPage = props.location.pathname.includes('login');
+
   return (
     <>
       <Helmet>
@@ -48,7 +51,8 @@ export function TestPage() {
       <NavBar />
       <PageWrapper>
         <Masthead />
-        <Login />
+        {isLoginPage && <Login />}
+        {isSignupPage && <Signup />}
       </PageWrapper>
     </>
   );

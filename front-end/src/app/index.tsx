@@ -32,7 +32,12 @@ export function App() {
         <Route exact path={process.env.PUBLIC_URL + '/'} component={HomePage} />
         <Route
           exact
-          path={process.env.PUBLIC_URL + '/test'}
+          path={process.env.PUBLIC_URL + '/login'}
+          component={TestPage}
+        />
+        <Route
+          exact
+          path={process.env.PUBLIC_URL + '/signup'}
           component={TestPage}
         />
         <Route component={NotFoundPage} />

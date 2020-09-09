@@ -28,7 +28,7 @@ export function Nav() {
         <DocumentationIcon />
         Home Page
       </ItemLink>
-      <ItemLink to="/signup">
+      <ItemLink to="/login">
         <DocumentationIcon />
         Log in
       </ItemLink>

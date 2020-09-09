@@ -5,6 +5,8 @@ import { actions } from './slice';
 import { User } from 'types/User';
 import { UserErrorType } from './types';
 
+const firebase = require('firebase/auth');
+
 /**
  * Github user request/response handler
  */
@@ -35,6 +37,46 @@ export function* getUser() {
   }
 }
 
+export function* loginUser() {
+  debugger;
+  yield delay(500);
+  // Select userEmail from store
+  const userEmail: string = yield select(selectUserEmail);
+  if (userEmail.length === 0) {
+    yield put(actions.userError(UserErrorType.USER_ID_EMPTY));
+    return;
+  }
+
+  try {
+    const user: User = yield call(login, userEmail, 'password');
+    debugger;
+    if (user.id) {
+      yield put(actions.userLoaded(user));
+    } else {
+      yield put(actions.userError(UserErrorType.USER_HAS_NO_USER));
+    }
+  } catch (err) {
+    if (err.response?.status === 404) {
+      yield put(actions.userError(UserErrorType.USER_NOT_FOUND));
+    } else {
+      yield put(actions.userError(UserErrorType.RESPONSE_ERROR));
+    }
+  }
+}
+
+export async function login(userEmail: string, password: string): Promise<any> {
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(userEmail, password)
+    .catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
+
+}
+
 /**
  * Root saga manages watcher lifecycle
  */
@@ -44,4 +86,5 @@ export function* logInSignUpSaga() {
   // It returns task descriptor (just like fork) so we can continue execution
   // It will be cancelled automatically on component unmount
   yield takeLatest(actions.loadUser.type, getUser);
+  yield takeLatest(actions.loginUser.type, loginUser);
 }

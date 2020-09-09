@@ -2,7 +2,7 @@ import { User } from 'types/User';
 
 /* --- STATE --- */
 export interface LogInSignUpState {
-  userEmail: number;
+  userEmail: any;
   loading: boolean;
   error?: UserErrorType | null;
   user: User;

@@ -28,8 +28,8 @@ const logInSignUpSlice = createSlice({
   name: 'logInSignUp',
   initialState,
   reducers: {
-    changeUserEmail(state, action: PayloadAction<number>) {
-      state.userEmail = Number(action.payload);
+    changeUserEmail(state, action: PayloadAction<any>) {
+      state.userEmail = action.payload;
     },
     loadUser(state) {
       state.loading = true;
@@ -44,6 +44,11 @@ const logInSignUpSlice = createSlice({
     userError(state, action: PayloadAction<UserErrorType>) {
       state.error = action.payload;
       state.loading = false;
+    },
+    loginUser(state) {
+      state.loading = true;
+      state.error = null;
+      state.user = {};
     },
   },
 });

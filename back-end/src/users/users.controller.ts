@@ -22,7 +22,7 @@ export class UsersController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string, @Headers('AuthToken') authToken): Promise<User> {
+  async findOne(@Param('id') id: string): Promise<User> {
     return await this.usersService.findOne(id);
   }
 

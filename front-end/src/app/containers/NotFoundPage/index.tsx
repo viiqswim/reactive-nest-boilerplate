@@ -3,7 +3,7 @@ import styled from 'styled-components/macro';
 import { Link } from 'app/components/Link';
 import { Helmet } from 'react-helmet-async';
 import { P } from './P';
-import { AppLayout } from '../Layout';
+import { AppLayout } from '../AppLayout';
 
 export function NotFoundPage() {
   return (

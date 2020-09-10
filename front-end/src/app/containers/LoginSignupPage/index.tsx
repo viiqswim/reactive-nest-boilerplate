@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import { Masthead } from './Masthead';
 import { Login } from '../Login';
 import { Signup } from '../Signup';
-import { AppLayout } from '../Layout';
+import { AppLayout } from '../AppLayout';
 
 export function TestPage(props) {
   const isSignupPage = props.location.pathname.includes('signup');

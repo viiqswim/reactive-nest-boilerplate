@@ -1,12 +1,12 @@
 import React from 'react';
 import { createRenderer } from 'react-test-renderer/shallow';
-import { NavBar } from '../index';
+import { AppLayout } from '../index';
 
 const shallowRenderer = createRenderer();
 
-describe('<NavBar />', () => {
+describe('<AppLayout />', () => {
   it('should match snapshot', () => {
-    shallowRenderer.render(<NavBar />);
+    shallowRenderer.render(<AppLayout children={<span>hello</span>} />);
     const renderedOutput = shallowRenderer.getRenderOutput();
     expect(renderedOutput).toMatchSnapshot();
   });

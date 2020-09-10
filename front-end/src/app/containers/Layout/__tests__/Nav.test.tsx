@@ -7,7 +7,7 @@ describe('<Nav />', () => {
   it('should match the snapshot', () => {
     const logo = render(
       <MemoryRouter>
-        <Nav />
+        <Nav collapsed />
       </MemoryRouter>,
     );
     expect(logo.container.firstChild).toMatchSnapshot();

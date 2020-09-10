@@ -15,9 +15,12 @@ export function AppLayout(props) {
     <MenuFoldOutlined />
   );
 
+  const windowHeight = window.innerHeight;
+  const layoutStyle = { minHeight: `${windowHeight}px` };
+
   return (
     <>
-      <Layout>
+      <Layout style={layoutStyle}>
         <Nav location={location} collapsed={collapsed} />
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }}>

@@ -8,10 +8,8 @@ import {
   UploadOutlined,
 } from '@ant-design/icons';
 import { Helmet } from 'react-helmet-async';
-// import { NavBar } from '../NavBar';
 import { Masthead } from './Masthead';
 import { Features } from './Features';
-// import { PageWrapper } from 'app/components/PageWrapper';
 
 const { Header, Sider, Content } = Layout;
 

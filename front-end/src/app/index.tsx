@@ -19,7 +19,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import { GlobalStyle } from '../styles/global-styles';
 
 import { HomePage } from './containers/HomePage/Loadable';
-import { TestPage } from './containers/TestPage/Loadable';
+import { TestPage } from './containers/LoginSignupPage/Loadable';
 import { NotFoundPage } from './containers/NotFoundPage/Loadable';
 import { firebaseApp } from '../../src/firebaseApp';
 

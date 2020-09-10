@@ -15,7 +15,6 @@ export function AppLayout(props) {
     <MenuFoldOutlined />
   );
 
-  debugger;
   return (
     <>
       <Layout>

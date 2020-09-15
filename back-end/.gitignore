@@ -35,4 +35,9 @@ lerna-debug.log*
 
 # Firebase
 firebase-service-account*
+
+# Vercel
 .vercel
+
+# DotEnv config
+env/.env.prod

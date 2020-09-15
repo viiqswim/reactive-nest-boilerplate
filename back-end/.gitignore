@@ -40,4 +40,4 @@ firebase-service-account*
 .vercel
 
 # DotEnv config
-env/.env.prod
+env/.env.production
